@@ -3,7 +3,7 @@ import SectionTitle from "./SectionTitle";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
 import PText from "./PText";
 import styled from "styled-components";
-import { MdArrowBack, MdArrowForward } from 'react-icons/md';
+import { MdArrowBack, MdArrowForward } from "react-icons/md";
 import testimonials from "../assets/data/testimonials";
 import { useState } from "react";
 
@@ -30,7 +30,7 @@ const TestimonialsSectionStyles = styled.div`
   }
   .testimonial__name {
     margin-top: 4rem;
-    font-family: 'Montserrat Bold';
+    font-family: "Montserrat Bold";
     font-size: 2.2rem;
   }
   .testimonial__title {
@@ -47,7 +47,7 @@ const TestimonialsSectionStyles = styled.div`
       pointer-events: none;
     }
     .next,
-    .previous {
+    .prev {
       margin: 0 0.5rem;
       width: fit-content;
       background-color: var(--deep-dark);
@@ -56,11 +56,47 @@ const TestimonialsSectionStyles = styled.div`
       cursor: pointer;
     }
   }
+  .fade-enter {
+    opacity: 0;
+    transform: scale(.96);
+  }
+  .fade-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: 250ms ease-in opacity;
+    transition-property: opacity, transform;
+  }
+  .fade-exit {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .fade-exit-active {
+    opacity: 0;
+    transform: scale(.96);
+    transition: 250ms ease-in opacity;
+    transition-property: opacity, transform;
+  }
 `;
 
 export default function TestimonialsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeSlide = testimonials[activeIndex];
+
+  function handlePrev() {
+    if (activeIndex >= testimonials.length - 1) {
+      setActiveIndex(0);
+    } else {
+      setActiveIndex((oldIndex) => oldIndex + 1);
+    }
+  }
+
+  function handleNext() {
+    if (activeIndex <= 0) {
+      setActiveIndex(testimonials.length - 1);
+    } else {
+      setActiveIndex((oldIndex) => oldIndex - 1);
+    }
+  }
 
   return (
     <TestimonialsSectionStyles>
@@ -71,29 +107,40 @@ export default function TestimonialsSection() {
         />
         <div className="testimonial__wrapper">
           <SwitchTransition>
-            <CSSTransition>
+            <CSSTransition
+            key={activeSlide.id}
+            timeout={300}
+            classNames="fade"
+            >
               <div className="testimonial__info">
                 <div className="testimonial__desc">
-                  <PText>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Fugit, aliquid!
-                  </PText>
+                  <PText>{activeSlide.desc}</PText>
                 </div>
-                <h2 className="testimonial__name">
-                  Shaif Arfan
-                </h2>
+                <h2 className="testimonial__name">{activeSlide.name}</h2>
                 <p className="testimonial__title">
-                  CEO, brand that
+                  {activeSlide.title}, <br /> {activeSlide.org}
                 </p>
               </div>
             </CSSTransition>
           </SwitchTransition>
         </div>
         <div className="arrows">
-          <div className="prev">
+          <div
+            className="prev"
+            onClick={handlePrev}
+            role="button"
+            tabIndex={0}
+            onKeyDown={handlePrev}
+          >
             <MdArrowBack />
           </div>
-          <div className="prev">
+          <div
+            className="next"
+            onClick={handleNext}
+            role="button"
+            tabIndex={0}
+            onKeyDown={handleNext}
+          >
             <MdArrowForward />
           </div>
         </div>
