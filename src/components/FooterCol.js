@@ -12,6 +12,11 @@ li {
 }
 a {
   font-size: 1.8rem;
+  border-radius: 4px;
+  transition: 0.3s ease background-color;
+      &:hover {
+        background-color: var(--gray-2);
+      }
 }
 `;
 

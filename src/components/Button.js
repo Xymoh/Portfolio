@@ -13,6 +13,10 @@ const ButtonStyle = styled.div`
     border: 2px solid grey;
     color: ${(props) => (props.outline ? "grey" : "black")};
     text-decoration: none;
+    transition: 0.3s ease background-color;
+    &:hover {
+      background-color: var(--gray-2);
+    }
   }
   @media only screen and (max-width: 768px) {
     .button {

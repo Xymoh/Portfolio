@@ -1,24 +1,24 @@
 const testimonials = [
   {
     id: 1,
-    name: "Andrew",
-    title: "CEO",
-    org: "Saeki Brand",
-    desc: "Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test",
+    name: "Burt Rutan",
+    title: "Creator of",
+    org: "Scaled Composites",
+    desc: "Testing leads to failure, and failure leads to understanding.",
   },
   {
     id: 2,
-    name: "simone",
-    title: "CTO",
-    org: "Google",
-    desc: "Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test",
+    name: "Andrew Hunt",
+    title: "Writer",
+    org: "The Pragmatic Programmer",
+    desc: "In some ways, programming is like painting. You start with a blank canvas and certain basic raw materials. You use a combination of science, art, and craft to determine what to do with them.",
   },
   {
     id: 1,
-    name: "Mitsuya",
-    title: "Weeb",
-    org: "MAL",
-    desc: "Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test",
+    name: "Chris Pine",
+    title: "Writer",
+    org: "Learn to Program",
+    desc: "Programming isn't about what you know; it's about what you can figure out.",
   },
 ];
 

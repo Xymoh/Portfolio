@@ -2,6 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 import discordKayn from "../images/discordkayn.png";
 import uruksahzal from "../images/uruksahzal.png";
 import wcfLocalChat from "../images/wcfLocalChat.png";
+import emotionrt from "../images/Happy.png";
 import unscrambleWords from "../images/unscrambleWords.png";
 
 const projects = [
@@ -22,6 +23,12 @@ const projects = [
     name: "WCF Local Chat",
     desc: "This application allows two or more people to communicate in a chat in the way of sending messages by text form. This chat works on a local connection/local machine.",
     img: wcfLocalChat,
+  },
+  {
+    id: uuidv4(),
+    name: "Emotion Real Time",
+    desc: "Using Python Machine Learning and external camera program upon the successfull training recognizes emotions on human faces in real time.",
+    img: emotionrt,
   },
   {
     id: uuidv4(),

@@ -1,9 +1,10 @@
 import React from "react";
-import HeroImg from "../assets/images/heroImg.jpg";
+import HeroImg from "../assets/images/heroMainImg.jpg";
 import SocialMediaArrow from "../assets/images/down-arrow2.png";
 import PText from "./PText";
 import Button from "./Button";
 import styled from "styled-components";
+import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const HeroStyles = styled.div`
   .hero {
@@ -38,9 +39,9 @@ const HeroStyles = styled.div`
     border: 2px solid var(--gray-1);
   }
   .hero__info {
-    margin-top: -18rem;
+    margin-top: -5rem;
   }
-  .hero__social, 
+  .hero__social,
   .hero__scrollDown {
     display: flex;
     flex-direction: column;
@@ -61,7 +62,7 @@ const HeroStyles = styled.div`
     p {
       font-size: 1.6rem;
       transform: translateY(-70px) rotate(90deg);
-      letter-spacing: .7rem;
+      letter-spacing: 0.7rem;
       text-transform: uppercase;
     }
     img {
@@ -84,7 +85,7 @@ const HeroStyles = styled.div`
       a {
         display: inline-block;
         font-size: 1.6rem;
-        transform: rotate(-90deg);
+        /* transform: rotate(-90deg); */
         letter-spacing: 5px;
         margin-bottom: 2rem;
       }
@@ -152,12 +153,13 @@ export default function HeroSection() {
             <span className="hero__name">Szymon Rusz.</span>
           </h1>
           <div className="hero__img">
-            <img src={HeroImg} alt="" />
+            <img src={HeroImg} alt="hero img" />
           </div>
           <div className="hero__info">
             <PText>
-              This is my text This is my text This is my text This is my text
-              This is my text
+              I am Computer Science Student who mainly focuses on self
+              development in GameDev, AndroidSoftware, ML in python, Discord.py
+              and React.
             </PText>
             <Button
               btnLink="/projects"
@@ -178,7 +180,7 @@ export default function HeroSection() {
                     rel="norefferer noreferrer"
                     target="_blank"
                   >
-                    FB
+                    <FaFacebook />
                   </a>
                 </li>
                 <li>
@@ -187,7 +189,7 @@ export default function HeroSection() {
                     target="_blank"
                     rel="norefferer noreferrer"
                   >
-                    IG
+                    <FaInstagram />
                   </a>
                 </li>
                 <li>
@@ -196,7 +198,7 @@ export default function HeroSection() {
                     target="_blank"
                     rel="norefferer noreferrer"
                   >
-                    LI
+                    <FaLinkedin />
                   </a>
                 </li>
               </ul>

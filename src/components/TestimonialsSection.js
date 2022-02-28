@@ -54,6 +54,10 @@ const TestimonialsSectionStyles = styled.div`
       padding: 0.5rem 2rem;
       border-radius: 8px;
       cursor: pointer;
+      transition: 0.2s ease background-color;
+      &:hover {
+        background-color: var(--black);
+      }
     }
   }
   .fade-enter {
@@ -102,8 +106,8 @@ export default function TestimonialsSection() {
     <TestimonialsSectionStyles>
       <div className="container">
         <SectionTitle
-          heading="Testimonials"
-          subheading="see what people are thinking about working with me"
+          heading="Programming Quotes"
+          subheading="choice of my favourite programming quotes"
         />
         <div className="testimonial__wrapper">
           <SwitchTransition>
