@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# Portfolio
 
+My own website where you can get to know me and see my recent works!
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Link to my website
 
-In the project directory, you can run:
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b190d8f2-4e4c-4ab4-8546-3ecc0a17dc15/deploy-status)](https://app.netlify.com/sites/sruszkiewicz/deploys)
+If you want to see the website live click on this [Link here](https://sruszkiewicz.netlify.app/)
 
-### `npm start`
+### Where do I host it?
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Website is hosted on Netify! Check it out by yourself. [Link here](https://www.netlify.com/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Favicon had been downloaded from here:
 
-### `npm test`
+[Link here](https://www.flaticon.com/free-icon/brifcase_6896450?term=portfolio&page=1&position=95&page=1&position=95&related_id=6896450&origin=search)
+Thanks **Creatype** for sharing such an awesome icon!
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### I generated favicon from this website!
 
-### `npm run build`
+[Link here](https://realfavicongenerator.net/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Will it have any future updates?
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+It is gonna have some more slight updates focusing with additional projects.
+If there are any bugs please do let me know, will fix them asap :).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Program created using React
 
-### `npm run eject`
+For programming I had used React with few additional external components/extensions, such as:
+- Styled Components
+- emailjs
+- Swiper
+- swiper/react
+- react-transition-group
+- router-dom
+- react-icons
+- global style
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+and fonts:
+- RobotoMono Regular
+- Montserrat SemiBold
+- Montserrat Bold
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Entire website uses just a few hexcodes of colors to make a consistent theme. These are:
+- --dark-bg: #262626;
+- --gray-1: #BCB4B4;
+- --deep-dark: #1E1E1E;
+- --gray-2: #363636;
+- --white : white;
+- --black: black;
