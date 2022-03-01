@@ -68,7 +68,6 @@ export default function ContactForm() {
       })
       .catch((err) => console.log(err));
 
-    window.location.reload();
     window.alert("Email sent successfully");
   }
 
