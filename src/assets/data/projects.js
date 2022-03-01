@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import discordKayn from "../images/discordkayn.png";
 import uruksahzal from "../images/uruksahzal.png";
+import portfolio from "../images/portfolio.png";
 import wcfLocalChat from "../images/wcfLocalChat.png";
 import emotionrt from "../images/Happy.png";
 import unscrambleWords from "../images/unscrambleWords.png";
@@ -17,6 +18,12 @@ const projects = [
     name: "Uruk'Sahzal Assault",
     desc: "Unity project game for a spaceship battle game working on railway camera!",
     img: uruksahzal,
+  },
+  {
+    id: uuidv4(),
+    name: "Portfolio",
+    desc: "My own website where you can get to know me and see my recent works!",
+    img: portfolio,
   },
   {
     id: uuidv4(),

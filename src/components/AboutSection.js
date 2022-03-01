@@ -1,6 +1,5 @@
 import React from "react";
 import PText from "../components/PText";
-import Button from "../components/Button";
 import AboutImg from "../assets/images/szymonRuszkiewiczGray.png";
 import styled from "styled-components";
 import AboutInfoItem from "../components/AboutInfoItem";
@@ -42,21 +41,43 @@ const AboutPageStyles = styled.div`
       max-width: 100%;
     }
   }
+  .about__info__downloadCV {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    margin-top: 2rem;
+    font-size: 2.2rem;
+    background-color: ${(props) => (props.outline ? "transparent" : "grey")};
+    padding: 0.7em 2em;
+    border-radius: 8px;
+    display: inline-block;
+    border: 2px solid grey;
+    color: ${(props) => (props.outline ? "grey" : "black")};
+    text-decoration: none;
+    transition: 0.3s ease background-color;
+    &:hover {
+      background-color: var(--gray-2);
+    }
+  }
   .about__info__items {
-      margin-top: 15rem;
+    margin-top: 15rem;
   }
   .about__info__item {
-      margin-top: 10rem;
+    margin-top: 10rem;
   }
   .about__info__heading {
-      font-size: 3.6rem;
-      text-transform: uppercase;
+    font-size: 3.6rem;
+    text-transform: uppercase;
   }
   @media only screen and (max-width: 768px) {
     padding: 10rem 0;
     .top-section {
       flex-direction: column;
       gap: 5rem;
+    }
+    .about__info__downloadCV {
+      font-size: 1.8rem;
     }
     .about__subheading {
       font-size: 1.8rem;
@@ -105,7 +126,14 @@ export default function About() {
                 easier, more fun.
               </PText>
             </div>
-            <Button btnText="Download CV" btnLink="#" />
+            <a
+              href="https://drive.google.com/file/d/1d4Z-_Nck8VLiLqf6S9y_R7ImKRHUtAEa/view?usp=sharing"
+              className="about__info__downloadCV"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Download CV
+            </a>
           </div>
           <div className="right">
             <img src={AboutImg} alt="Szymon Ruszkiewicz img" />
@@ -114,35 +142,51 @@ export default function About() {
         <div className="about__info__items">
           <div className="about__info__item">
             <h1 className="about__info__heading">Education</h1>
-            <AboutInfoItem 
-            title="College"
-            items={["University of Economics in Katowice"]}
+            <AboutInfoItem
+              title="College"
+              items={["University of Economics in Katowice"]}
             />
           </div>
           <div className="about__info__item">
             <h1 className="about__info__heading">My Skills</h1>
-            <AboutInfoItem 
-            title="Game Dev"
-            items={["Unity", "C#", "Vuforia", "Unreal"]}
+            <AboutInfoItem
+              title="Game Dev"
+              items={["Unity", "C#", "Vuforia", "Unreal"]}
             />
-            <AboutInfoItem 
-            title="BackEnd"
-            items={["C#", "Python", "Discord.py", "Kotlin", "Android Studio", "Xamarin", "WPF"]}
+            <AboutInfoItem
+              title="BackEnd"
+              items={[
+                "C#",
+                "Python",
+                "Discord.py",
+                "Kotlin",
+                "Android Studio",
+                "Xamarin",
+                "WPF",
+              ]}
             />
-            <AboutInfoItem 
-            title="FrontEnd"
-            items={["HTML", "XAML", "CSS", "React", "Canva", "Photoshop", "Figma"]}
+            <AboutInfoItem
+              title="FrontEnd"
+              items={[
+                "HTML",
+                "XAML",
+                "CSS",
+                "React",
+                "Canva",
+                "Photoshop",
+                "Figma",
+              ]}
             />
           </div>
           <div className="about__info__item">
             <h1 className="about__info__heading">Experience</h1>
-            <AboutInfoItem 
-            title="March 2021 - August 2021"
-            items={["React + Django REST API Internship at VascoSky"]}
+            <AboutInfoItem
+              title="March 2021 - August 2021"
+              items={["React + Django REST API Internship at VascoSky"]}
             />
-            <AboutInfoItem 
-            title="March 2020 - March 2022"
-            items={["FQA Tester at Keywords Studio"]}
+            <AboutInfoItem
+              title="March 2020 - March 2022"
+              items={["FQA Tester at Keywords Studio"]}
             />
           </div>
         </div>

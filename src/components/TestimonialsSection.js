@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import SectionTitle from "./SectionTitle";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
 import PText from "./PText";
 import styled from "styled-components";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
 import testimonials from "../assets/data/testimonials";
-import { useState } from "react";
 
 const TestimonialsSectionStyles = styled.div`
   padding: 10rem 0;
@@ -62,7 +61,7 @@ const TestimonialsSectionStyles = styled.div`
   }
   .fade-enter {
     opacity: 0;
-    transform: scale(.96);
+    transform: scale(0.96);
   }
   .fade-enter-active {
     opacity: 1;
@@ -76,7 +75,7 @@ const TestimonialsSectionStyles = styled.div`
   }
   .fade-exit-active {
     opacity: 0;
-    transform: scale(.96);
+    transform: scale(0.96);
     transition: 250ms ease-in opacity;
     transition-property: opacity, transform;
   }
@@ -111,11 +110,7 @@ export default function TestimonialsSection() {
         />
         <div className="testimonial__wrapper">
           <SwitchTransition>
-            <CSSTransition
-            key={activeSlide.id}
-            timeout={300}
-            classNames="fade"
-            >
+            <CSSTransition key={activeSlide.id} timeout={300} classNames="fade">
               <div className="testimonial__info">
                 <div className="testimonial__desc">
                   <PText>{activeSlide.desc}</PText>
