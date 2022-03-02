@@ -110,10 +110,11 @@ const HeroStyles = styled.div`
     }
     .hero__social {
       left: 0px;
-      bottom: 15%;
-      width: 20px;
+      bottom: -15%;
+      /* bottom: 15%; */
+      /* width: 20px; */
       .hero__social__indicator {
-        width: 20px;
+        /* width: 20px; */
         p {
           font-size: 1.2rem;
         }
@@ -134,7 +135,8 @@ const HeroStyles = styled.div`
     }
     .hero__scrollDown {
       right: 0;
-      width: 20px;
+      bottom: -10%;
+      /* width: 20px; */
       gap: 1rem;
       p {
         font-size: 1.3rem;

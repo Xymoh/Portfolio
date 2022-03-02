@@ -28,9 +28,13 @@ const AboutItemStyles = styled.div`
     align-items: flex-start;
     gap: 1rem;
     .items {
+      display: inline;
       position: initial;
       gap: 1rem;
       margin-left: 0;
+    }
+    .item {
+      margin-bottom: 1rem;
     }
     .title {
       font-size: 2rem;
@@ -46,11 +50,18 @@ export default function AboutInfoItem({
     <AboutItemStyles>
       <h1 className="title">{title}</h1>
       <div className="items">
-        {items.map((item, index) => (
-          <div className="item" key={index}>
-            <PText>{item}</PText>
-          </div>
-        ))}
+        {items.map((item, index) =>
+          index === 4 ? (
+            <div className="item" key={index}>
+              <PText>{item}</PText>
+              <br/>
+            </div>
+          ) : (
+            <div className="item" key={index}>
+              <PText>{item}</PText>
+            </div>
+          )
+        )}
       </div>
     </AboutItemStyles>
   );

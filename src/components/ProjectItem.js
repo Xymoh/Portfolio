@@ -6,7 +6,7 @@ import projectImg from "../assets/images/placeholder.jpg"
 const ProjectItemStyle = styled.div`
     .projectItem__img {
         width: 100%;
-        height: 350px;
+        /* height: 350px; */
         overflow: hidden;
         border-radius: 12px;
         display: inline-block;
@@ -29,11 +29,11 @@ const ProjectItemStyle = styled.div`
       font-family: 'RobotoMono Regular';
       margin-top: 1rem;
     }
-    @media only screen and (max-width: 768px) {
+    /* @media only screen and (max-width: 768px) {
       .projectItem__img {
         height: 350px;
       }
-    }
+    } */
 `;
 
 export default function ProjectItem({

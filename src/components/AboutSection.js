@@ -160,7 +160,7 @@ export default function About() {
                 "Python",
                 "Discord.py",
                 "Kotlin",
-                "Android Studio",
+                "AndroidStudio",
                 "Xamarin",
                 "WPF",
               ]}

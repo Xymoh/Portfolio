@@ -31,7 +31,7 @@ const FooterStyles = styled.div`
       margin-left: 0;
     }
   }
-  @mmedia only screen and (max-width: 768px) {
+  @media only screen and (max-width: 768px) {
     .container {
       flex-direction: column;
       gap: 0rem;
