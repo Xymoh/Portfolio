@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+
 import FooterCol from "./FooterCol";
 import PText from "./PText";
 
@@ -59,11 +60,10 @@ export default function Footer() {
         <div className="footer__col1">
           <h1 className="footer__col1__title">Szymon Ruszkiewicz</h1>
           <PText>
-            A Computer Science student with Game Programming and Mobile
-            Programming Speciality. I'm mainly working using tools like Unity
-            and Kotlin. My other area of interests are ML with python and
-            Discord.py and React for websites with some basic knowledge of REST
-            API with Django.
+            A Software Engineer with Game Programming and Mobile Programming
+            Speciality degree. I'm mainly working using tools like React,
+            React-Native, Unity, Android and iOS. My other area of interests are
+            ML with python and Rails for my websites backend.
           </PText>
         </div>
         <div className="footer__col2">
@@ -95,7 +95,7 @@ export default function Footer() {
         </div>
         <div className="footer__col3">
           <FooterCol
-            heading="Cotact Info"
+            heading="Contact Info"
             links={[
               {
                 title: "+48691636192",
@@ -117,10 +117,6 @@ export default function Footer() {
             heading="Social Links"
             links={[
               {
-                title: "Facebook",
-                path: "https://www.facebook.com/szymon.ruszkiewicz",
-              },
-              {
                 title: "Instagram",
                 path: "https://www.instagram.com/szy.rus/",
               },
@@ -128,16 +124,13 @@ export default function Footer() {
                 title: "Linkedin",
                 path: "https://www.linkedin.com/in/szymon-ruszkiewicz-548526180/",
               },
-              {
-                title: "Discord (Server during maintenance)",
-              },
             ]}
           />
         </div>
       </div>
       <div className="copyright">
         <div className="container">
-          <PText>© 2022 - Szymon Ruszkiewicz</PText>
+          <PText>© 2024 - Szymon Ruszkiewicz</PText>
         </div>
       </div>
     </FooterStyles>

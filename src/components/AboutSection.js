@@ -1,7 +1,8 @@
 import React from "react";
+import styled from "styled-components";
+
 import PText from "../components/PText";
 import AboutImg from "../assets/images/szymonRuszkiewiczGray.png";
-import styled from "styled-components";
 import AboutInfoItem from "../components/AboutInfoItem";
 import ContactBanner from "../components/ContactBanner";
 
@@ -103,27 +104,26 @@ export default function About() {
             <h2 className="about__heading">A Computer Science Student</h2>
             <div className="about__info">
               <PText>
-                I am from Katowice, Poland. Since my childhood, I love
-                videogames, entertainment and computers, literally all about em
-                is fun. I always try to design a unique applications or games
-                which could bring a new level of user experience and something
-                that could be useful for them.
+                I am from Katowice, Poland. Since childhood, I've been
+                passionate about video games, entertainment, and
+                computers—everything about them fascinates me. I strive to
+                design unique applications and games that elevate user
+                experience and provide genuine utility.
                 <br />
                 <br />
-                I started coding relatively late. It all started with the
-                question "What do I want to study?". So I asked myself, What
-                would be the most fun thing for me to do for the rest of my
-                life, and what did I enjoyed the most. Answer was simple,
-                computers, their architecture and videogames. So I found myself
-                a university with speciality for videogames and mobile
-                applications development. Starting coding and making software
-                was the best decision in my life.
+                My coding journey began later than most. It all started with a
+                pivotal question: "What do I want to study?" I pondered what
+                would bring me the most joy and fulfillment in life. The answer
+                was clear: computers, their architecture, and video games. This
+                realization led me to a university specializing in video game
+                and mobile application development. Diving into coding and
+                software creation was the best decision I've ever made.
                 <br />
                 <br />
-                My vision is to make an application or a video game which gonna
-                be known and remembered by the people. Something that gonna
-                bring a refreshing and memorable memories, or make the life
-                easier, more fun.
+                My vision is to create an application or video game that will be
+                remembered and cherished by people. I aim to craft experiences
+                that evoke refreshing and memorable moments or make life easier
+                and more enjoyable.
               </PText>
             </div>
             <a
@@ -150,27 +150,38 @@ export default function About() {
           <div className="about__info__item">
             <h1 className="about__info__heading">My Skills</h1>
             <AboutInfoItem
+              title="Mobile Dev"
+              items={[
+                "React-Native",
+                "Flutter",
+                "Android Studio",
+                "Kotlin",
+                "xCode",
+                "Swift",
+              ]}
+            />
+            <AboutInfoItem
               title="Game Dev"
               items={["Unity", "C#", "Vuforia", "Unreal"]}
             />
             <AboutInfoItem
               title="BackEnd"
               items={[
-                "C#",
-                "Python",
-                "Discord.py",
-                "Kotlin",
-                "AndroidStudio",
-                "Xamarin",
-                "WPF",
+                "Rails",
+                "Quarkus",
+                "Django",
+                "Firebase",
+                "Node.js",
+                "PSQL",
+                "MySQL",
               ]}
             />
             <AboutInfoItem
               title="FrontEnd"
               items={[
-                "HTML",
-                "XAML",
-                "CSS",
+                "Javascript",
+                "Typescript",
+                "SCSS",
                 "React",
                 "Canva",
                 "Photoshop",
@@ -180,6 +191,10 @@ export default function About() {
           </div>
           <div className="about__info__item">
             <h1 className="about__info__heading">Experience</h1>
+            <AboutInfoItem
+              title="June 2022 - Till now"
+              items={["Software Developer at TDCM.io"]}
+            />
             <AboutInfoItem
               title="March 2021 - August 2021"
               items={["React + Django REST API Internship at VascoSky"]}

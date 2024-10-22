@@ -159,9 +159,10 @@ export default function HeroSection() {
           </div>
           <div className="hero__info">
             <PText>
-              I am Computer Science Student who mainly focuses on self
-              development in GameDev, AndroidSoftware, ML in python, Discord.py
-              and React.
+              I am Software Engineer with a passion of helping people with their
+              startup projects. My main technologies are based around
+              Mobile-development and web-development but it's not the only set
+              of my skills as I'm here to help you develop your dream projects.
             </PText>
             <Button
               btnLink="/projects"
