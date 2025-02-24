@@ -1,8 +1,9 @@
 import React from "react";
-import SectionTitle from "./SectionTitle";
-import ServicesSectionItem from "./ServicesSectionItem";
 import styled from "styled-components";
 import { MdDesktopMac, MdPhoneAndroid, MdCode } from "react-icons/md";
+
+import SectionTitle from "./SectionTitle";
+import ServicesSectionItem from "./ServicesSectionItem";
 
 const ServicesItemStyles = styled.div`
   padding: 10rem 0;

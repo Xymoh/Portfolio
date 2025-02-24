@@ -10,15 +10,15 @@ const testimonials = [
     id: 2,
     name: "Andrew Hunt",
     title: "Writer",
-    org: "The Pragmatic Programmer",
-    desc: "In some ways, programming is like painting. You start with a blank canvas and certain basic raw materials. You use a combination of science, art, and craft to determine what to do with them.",
+    org: "The Pragmatic Programer",
+    desc: "In some ways, programing is like painting. You start with a blank canvas and certain basic raw materials. You use a combination of science, art, and craft to determine what to do with them.",
   },
   {
     id: 1,
     name: "Chris Pine",
     title: "Writer",
     org: "Learn to Program",
-    desc: "Programming isn't about what you know; it's about what you can figure out.",
+    desc: "Programing isn't about what you know; it's about what you can figure out.",
   },
 ];
 
