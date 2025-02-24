@@ -49,7 +49,7 @@ const FormStyles = styled.form`
 `;
 
 export default function ContactForm() {
-  const [name, setName] = useState("");
+  const [fromName, setFromName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
@@ -58,31 +58,34 @@ export default function ContactForm() {
 
     emailjs
       .sendForm(
-        "service_41xmcik",
-        "template_z0hpime",
+        process.env.REACT_APP_EMAILJS_SERVICE,
+        process.env.REACT_APP_EMAILJS_TEMPLATE,
         e.target,
-        "Bs5DhtWK8QHH7I0Qn"
+        process.env.REACT_APP_EMAILJS_USER
       )
       .then((res) => {
         console.log(res);
+        window.alert("Email sent successfully");
       })
-      .catch((err) => console.log(err));
-
-    window.alert("Email sent successfully");
+      .catch((err) => {
+        console.log(err);
+        window.alert("Failed to send email. Please try again.");
+      });
   }
 
   return (
     <FormStyles onSubmit={sentEmail}>
+      <input type="hidden" name="to_name" value="szyruszk@gmail.com" />
       <div className="form-group">
-        <label htmlFor="name">
+        <label htmlFor="fromName">
           Your Name/Company Name:
           <input
             type="text"
-            id="name"
-            name="name"
-            value={name}
+            id="fromName"
+            name="from_name"
+            value={fromName}
             required
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setFromName(e.target.value)}
           />
         </label>
       </div>
@@ -92,7 +95,7 @@ export default function ContactForm() {
           <input
             type="text"
             id="email"
-            name="email"
+            name="reply_to"
             value={email}
             required
             onChange={(e) => setEmail(e.target.value)}
@@ -103,7 +106,6 @@ export default function ContactForm() {
         <label htmlFor="message">
           Your Message:
           <textarea
-            type="text"
             id="message"
             name="message"
             value={message}

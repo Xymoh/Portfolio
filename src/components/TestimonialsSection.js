@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import SectionTitle from "./SectionTitle";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
-import PText from "./PText";
 import styled from "styled-components";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
+
+import SectionTitle from "./SectionTitle";
+import PText from "./PText";
 import testimonials from "../assets/data/testimonials";
 
 const TestimonialsSectionStyles = styled.div`
@@ -106,7 +107,7 @@ export default function TestimonialsSection() {
       <div className="container">
         <SectionTitle
           heading="Programming Quotes"
-          subheading="choice of my favourite programming quotes"
+          subheading="Choice of my favourite programming quotes"
         />
         <div className="testimonial__wrapper">
           <SwitchTransition>

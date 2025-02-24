@@ -1,7 +1,8 @@
 import React from "react";
-import PText from "../components/PText";
-import AboutImg from "../assets/images/szymonRuszkiewiczGray.png";
 import styled from "styled-components";
+
+import PText from "../components/PText";
+import AboutImg from "../assets/images/szymonRuszkiewicz.png";
 import AboutInfoItem from "../components/AboutInfoItem";
 import ContactBanner from "../components/ContactBanner";
 
@@ -156,36 +157,91 @@ export default function About() {
             <AboutInfoItem
               title="BackEnd"
               items={[
-                "C#",
-                "Python",
-                "Discord.py",
-                "Kotlin",
-                "AndroidStudio",
-                "Xamarin",
-                "WPF",
+                "Ruby on Rails",
+                "Node.js",
+                "Postman",
+                "PostgreSQL",
+                "MySQL",
+                "Firebase",
               ]}
             />
             <AboutInfoItem
               title="FrontEnd"
               items={[
+                "React",
+                "React-Native",
+                "Xamarin",
                 "HTML",
                 "XAML",
                 "CSS",
-                "React",
+                "SCSS",
+                "Ionic",
+                "Expo",
+                "JavaScript",
+                "TypeScript",
+                "Kotlin",
+                "Swift",
                 "Canva",
                 "Photoshop",
                 "Figma",
+              ]}
+            />
+            <AboutInfoItem
+              title="Tools"
+              items={[
+                "Git",
+                "Docker",
+                "Postman",
+                "Apollo GraphQL",
+                "DBeaver",
+                "VS Code",
+                "Android Studio",
+                "XCode",
+                "Unity",
+                "Jira",
+                "Trello",
+                "Slack",
+                "Discord",
+                "Zoom",
+                "Basecamp",
+              ]}
+            />
+            <AboutInfoItem
+              title="Soft Skills"
+              items={[
+                "Teamwork",
+                "Problem Solving",
+                "Communication",
+                "Time Management",
+                "Adaptability",
+                "Creativity",
+                "Work Ethic",
+                "Leadership",
+              ]}
+            />
+            <AboutInfoItem
+              title="Languages"
+              items={[
+                "Polish - Native",
+                "English - C1",
+                "Serbian - B1",
+                "Japanese - A2",
+                "Chinese - A1",
               ]}
             />
           </div>
           <div className="about__info__item">
             <h1 className="about__info__heading">Experience</h1>
             <AboutInfoItem
+              title="June 2022 - Present"
+              items={["Software Developer at TDCM.IO"]}
+            />
+            <AboutInfoItem
               title="March 2021 - August 2021"
               items={["React + Django REST API Internship at VascoSky"]}
             />
             <AboutInfoItem
-              title="March 2020 - March 2022"
+              title="March 2020 - June 2022"
               items={["FQA Tester at Keywords Studio"]}
             />
           </div>

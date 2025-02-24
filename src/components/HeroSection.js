@@ -1,10 +1,11 @@
 import React from "react";
+import styled from "styled-components";
+import { FaInstagram, FaLinkedin } from "react-icons/fa";
+
 import HeroImg from "../assets/images/heroMainImg.jpg";
 import SocialMediaArrow from "../assets/images/down-arrow2.png";
 import PText from "./PText";
 import Button from "./Button";
-import styled from "styled-components";
-import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const HeroStyles = styled.div`
   .hero {
@@ -165,7 +166,7 @@ export default function HeroSection() {
             </PText>
             <Button
               btnLink="/projects"
-              btnText="see my works"
+              btnText="See my works"
               outline={false}
             />
           </div>
@@ -178,15 +179,6 @@ export default function HeroSection() {
               <ul>
                 <li>
                   <a
-                    href="https://www.facebook.com/szymon.ruszkiewicz/"
-                    rel="norefferer noreferrer"
-                    target="_blank"
-                  >
-                    <FaFacebook />
-                  </a>
-                </li>
-                <li>
-                  <a
                     href="https://www.instagram.com/szy.rus/"
                     target="_blank"
                     rel="norefferer noreferrer"
@@ -196,7 +188,7 @@ export default function HeroSection() {
                 </li>
                 <li>
                   <a
-                    href="https://www.linkedin.com/in/szymon-ruszkiewicz-548526180/"
+                    href="https://www.linkedin.com/in/szymon-r-548526180/"
                     target="_blank"
                     rel="norefferer noreferrer"
                   >

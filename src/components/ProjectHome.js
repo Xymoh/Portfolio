@@ -1,13 +1,17 @@
 import React from "react";
-import SectionTitle from "./SectionTitle";
+import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation } from "swiper";
+import SwiperCore from 'swiper';
+import styled from "styled-components";
+
+import "swiper/css";
+import 'swiper/css/navigation';
+
+import SectionTitle from "./SectionTitle";
 import projects from "../assets/data/projects";
 import ProjectItem from "./ProjectItem";
-import styled from "styled-components";
-import "swiper/css";
 
-// install Swiper modules
+
 SwiperCore.use([Navigation]);
 
 const ProjectSectionStyle = styled.div`
@@ -21,30 +25,40 @@ const ProjectSectionStyle = styled.div`
     padding-top: 8rem;
     max-width: 100%;
   }
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #fff;
+    width: 3rem;
+    height: 3rem;
+    z-index: 10;
+  }
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+    color:rgb(255, 197, 197);
+  }
 `;
 
 export default function ProjectSection() {
   return (
     <ProjectSectionStyle>
       <div className="container">
-        <SectionTitle heading="Projects" subheading="some of my recent works, swipe left or right to see more" />
+        <SectionTitle heading="Projects" subheading="Some of my recent works, swipe left or right to see more" />
         <div className="projects__allItems">
           <Swiper
             spaceBetween={30}
             slidesPerView={1}
-            navigation
+            navigation={true}
             breakpoints={{
-              // when window width is greather or equal 640px
               640: {
                 slidesPerView: 1,
               },
-              // for 768px
               768: {
                 slidesPerView: 2,
               },
             }}
           >
             {projects.map((project, index) => {
+              console.log("Project URL:", project.url);
               if (index >= 5) return null;
               return (
                 <SwiperSlide key={project.id}>
@@ -52,6 +66,7 @@ export default function ProjectSection() {
                     img={project.img}
                     title={project.name}
                     desc={project.desc}
+                    url={project.url}
                   />
                 </SwiperSlide>
               );

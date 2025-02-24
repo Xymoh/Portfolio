@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+
 import FooterCol from "./FooterCol";
 import PText from "./PText";
 
@@ -102,8 +103,8 @@ export default function Footer() {
                 path: "tel:+48691636192",
               },
               {
-                title: "ruszkiewiczszymon@gmail.com",
-                path: "mailto:ruszkiewiczszymon@gmail.com",
+                title: "szyruszk@gmail.com",
+                path: "mailto:szyruszk@gmail.com",
               },
               {
                 title: "Katowice, Slask, Poland",
@@ -117,16 +118,12 @@ export default function Footer() {
             heading="Social Links"
             links={[
               {
-                title: "Facebook",
-                path: "https://www.facebook.com/szymon.ruszkiewicz",
-              },
-              {
                 title: "Instagram",
                 path: "https://www.instagram.com/szy.rus/",
               },
               {
                 title: "Linkedin",
-                path: "https://www.linkedin.com/in/szymon-ruszkiewicz-548526180/",
+                path: "https://www.linkedin.com/in/szymon-r-548526180/",
               },
               {
                 title: "Discord (Server during maintenance)",
@@ -137,7 +134,7 @@ export default function Footer() {
       </div>
       <div className="copyright">
         <div className="container">
-          <PText>© 2022 - Szymon Ruszkiewicz</PText>
+          <PText>© 2025 - Szymon Ruszkiewicz</PText>
         </div>
       </div>
     </FooterStyles>

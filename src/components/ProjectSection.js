@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import SectionTitle from "../components/SectionTitle";
 import { MdSearch } from "react-icons/md";
+
+import SectionTitle from "../components/SectionTitle";
 import ProjectItem from "../components/ProjectItem";
 import ProjectInfo from "../assets/data/projects";
 
@@ -72,7 +73,7 @@ export default function Projects() {
   return (
     <ProjectsStyles>
       <div className="container">
-        <SectionTitle heading="Projects" subheading="some of my recent works" />
+        <SectionTitle heading="Projects" subheading="Some of my recent works" />
         <div className="projects__searchBar">
           <form>
             <input
@@ -91,6 +92,7 @@ export default function Projects() {
               title={item.name}
               desc={item.desc}
               img={item.img}
+              url={item.url}
             />
           ))}
         </div>
