@@ -9,14 +9,17 @@ const AboutItemStyles = styled.div`
   justify-content: flex-start;
   margin-top: 3rem;
   position: relative;
+  gap: 2rem;
   .title {
     font-size: 2.4rem;
+    min-width: 18rem;
   }
   .items {
     display: flex;
     gap: 1.5rem;
     margin-left: 3rem;
     left: 18rem;
+    flex-wrap: wrap;
   }
   .item {
     background-color: var(--deep-dark);
@@ -28,10 +31,34 @@ const AboutItemStyles = styled.div`
       transform: translateY(-3px);
     }
   }
+  ${(props) =>
+    props.$variant === "list" &&
+    `
+      align-items: flex-start;
+      .title {
+        margin-top: 0.2rem;
+      }
+      .items {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        margin-left: 0;
+        width: 100%;
+        max-width: 860px;
+        gap: 1rem;
+      }
+      .item {
+        width: 100%;
+        padding: 1rem 1.2rem;
+        border-left: 3px solid var(--accent);
+      }
+    `}
   @media only screen and (max-width: 768px) {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+    .title {
+      min-width: 0;
+    }
     .items {
       display: inline;
       position: initial;
@@ -50,9 +77,10 @@ const AboutItemStyles = styled.div`
 export default function AboutInfoItem({
   title = "This is title",
   items = ["Item1", "Item2"],
+  variant = "chips",
 }) {
   return (
-    <AboutItemStyles>
+    <AboutItemStyles $variant={variant}>
       <h1 className="title">{title}</h1>
       <div className="items">
         {items.map((item, index) =>

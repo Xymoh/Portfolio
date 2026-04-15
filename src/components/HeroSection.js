@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 import HeroImg from "../assets/images/heroMainImg.jpg";
 import SocialMediaArrow from "../assets/images/down-arrow2.png";
@@ -9,38 +9,56 @@ import Button from "./Button";
 
 const HeroStyles = styled.div`
   .hero {
-    height: 100vh;
-    min-height: 1000px;
+    min-height: 100vh;
     width: 100%;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    padding: 12rem 0 8rem;
   }
   .hero__heading {
     font-size: 2rem;
-    margin-bottom: -4rem;
+    margin-bottom: -1.2rem;
     position: relative;
     span {
       display: inline-block;
       width: 100%;
     }
     .hero__name {
-      font-size: 7rem;
-      font-family: "Montserrat SemiBold";
+      font-size: 7.2rem;
+      font-family: "Montserrat Bold";
       color: var(--white);
+      letter-spacing: 0.01em;
     }
   }
   .hero__img {
-    max-width: 900px;
+    max-width: 920px;
     width: 100%;
-    height: 600px;
+    height: 560px;
     margin: 0 auto;
-    border: 2px solid var(--gray-1);
+    border: 1px solid var(--surface-border);
+    border-radius: 26px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    background: rgba(255, 255, 255, 0.02);
+    img {
+      object-fit: cover;
+      transition: 0.45s ease transform;
+    }
+    &:hover img {
+      transform: scale(1.03);
+    }
   }
   .hero__info {
-    margin-top: -5rem;
+    margin: 2.8rem auto 0;
+    max-width: 680px;
+    background: rgba(12, 18, 28, 0.72);
+    border: 1px solid var(--surface-border);
+    border-radius: 18px;
+    padding: 2.4rem;
+    box-shadow: var(--shadow-soft);
   }
   .hero__social,
   .hero__scrollDown {
@@ -48,23 +66,24 @@ const HeroStyles = styled.div`
     flex-direction: column;
     gap: 2rem;
     position: absolute;
-    bottom: 20px;
+    bottom: 24px;
     width: 50px;
   }
   .hero__social {
-    left: 50px;
+    left: 3.8rem;
   }
   .hero__scrollDown {
-    right: 50px;
+    right: 3.8rem;
   }
   .hero__social__indicator,
   .hero__scrollDown {
     width: 50px;
     p {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       transform: translateY(-70px) rotate(90deg);
-      letter-spacing: 0.7rem;
+      letter-spacing: 0.5rem;
       text-transform: uppercase;
+      color: var(--ink-2);
     }
     img {
       max-height: 90px;
@@ -85,37 +104,39 @@ const HeroStyles = styled.div`
       }
       a {
         display: inline-block;
-        font-size: 1.6rem;
-        /* transform: rotate(-90deg); */
-        letter-spacing: 5px;
-        margin-bottom: 2rem;
+        font-size: 2.1rem;
+        margin-bottom: 1.4rem;
+        transition: 0.2s ease transform, 0.2s ease color;
+        &:hover {
+          transform: translateY(-2px);
+          color: var(--accent);
+        }
       }
     }
   }
   @media only screen and (max-width: 768px) {
     .hero {
-      min-height: 750px;
+      min-height: 760px;
+      padding: 9rem 0 7rem;
     }
     .hero__heading {
       font-size: 1.4rem;
-      margin-bottom: -3rem;
+      margin-bottom: -2.2rem;
       .hero__name {
-        font-size: 4.5rem;
+        font-size: 4.6rem;
       }
     }
     .hero__img {
-      height: 300px;
+      height: 310px;
     }
     .hero__info {
-      margin-top: 3rem;
+      margin-top: 2.4rem;
+      padding: 1.8rem;
     }
     .hero__social {
       left: 0px;
-      bottom: -15%;
-      /* bottom: 15%; */
-      /* width: 20px; */
+      bottom: -9%;
       .hero__social__indicator {
-        /* width: 20px; */
         p {
           font-size: 1.2rem;
         }
@@ -136,11 +157,10 @@ const HeroStyles = styled.div`
     }
     .hero__scrollDown {
       right: 0;
-      bottom: -10%;
-      /* width: 20px; */
+      bottom: -7%;
       gap: 1rem;
       p {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
       }
     }
   }
@@ -160,13 +180,13 @@ export default function HeroSection() {
           </div>
           <div className="hero__info">
             <PText>
-              I am Computer Science Student who mainly focuses on self
-              development in GameDev, AndroidSoftware, ML in python, Discord.py
-              and React.
+              I am a Computer Science student focused on crafting polished
+              digital products across mobile apps, web interfaces, and gameplay
+              systems. I blend practical engineering with thoughtful UI design.
             </PText>
             <Button
               btnLink="/projects"
-              btnText="See my works"
+              btnText="Explore My Projects"
               outline={false}
             />
           </div>
@@ -177,6 +197,15 @@ export default function HeroSection() {
             </div>
             <div className="hero__social__text">
               <ul>
+                <li>
+                  <a
+                    href="https://github.com/Xymoh"
+                    target="_blank"
+                    rel="norefferer noreferrer"
+                  >
+                    <FaGithub />
+                  </a>
+                </li>
                 <li>
                   <a
                     href="https://www.instagram.com/szy.rus/"

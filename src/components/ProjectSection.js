@@ -10,35 +10,41 @@ const ProjectsStyles = styled.div`
   padding: 10rem 0;
   .projects__allItems {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 5rem;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 3rem;
     margin-top: 5rem;
   }
   .projects__searchBar {
     position: relative;
-    width: 300px;
+    width: 360px;
     margin-top: 5rem;
   }
   .projects__searchBar input {
     width: 100%;
-    font-size: 2rem;
-    padding: 0.8rem;
-    color: var(--black);
-    border-radius: 6px;
+    font-size: 1.7rem;
+    padding: 1.15rem 4rem 1.15rem 1.4rem;
+    color: var(--white);
+    background: rgba(12, 18, 28, 0.74);
+    border-radius: 999px;
     outline: none;
-    border: 2px solid white;
+    border: 1px solid var(--surface-border);
     transition: 0.2s ease border;
     &:focus {
-      border: 2px solid var(--gray-1);
+      border: 1px solid rgba(99, 209, 191, 0.75);
     }
+  }
+  .projects__searchBar input::placeholder {
+    color: var(--ink-2);
   }
   .projects__searchBar .searchIcon {
     position: absolute;
-    width: 2rem;
-    right: 1rem;
+    width: 2.3rem;
+    right: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
   }
   .projects__searchBar .searchIcon path {
-    color: var(--deep-dark);
+    color: var(--ink-2);
   }
   @media only screen and (max-width: 768px) {
     .projects__searchBar,

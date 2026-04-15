@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
 import styled from "styled-components";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
@@ -85,6 +85,7 @@ const TestimonialsSectionStyles = styled.div`
 export default function TestimonialsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeSlide = testimonials[activeIndex];
+  const nodeRef = useRef(null);
 
   function handlePrev() {
     if (activeIndex >= testimonials.length - 1) {
@@ -111,8 +112,13 @@ export default function TestimonialsSection() {
         />
         <div className="testimonial__wrapper">
           <SwitchTransition>
-            <CSSTransition key={activeSlide.id} timeout={300} classNames="fade">
-              <div className="testimonial__info">
+            <CSSTransition
+              key={activeSlide.id}
+              timeout={300}
+              classNames="fade"
+              nodeRef={nodeRef}
+            >
+              <div ref={nodeRef} className="testimonial__info">
                 <div className="testimonial__desc">
                   <PText>{activeSlide.desc}</PText>
                 </div>

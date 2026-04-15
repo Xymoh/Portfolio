@@ -6,7 +6,8 @@ import PText from "./PText";
 
 const FooterStyles = styled.div`
   padding-top: 10rem;
-  background-color: var(--deep-dark);
+  background: linear-gradient(180deg, rgba(16, 23, 34, 0.45) 0%, var(--deep-bg) 45%);
+  border-top: 1px solid var(--surface-border);
   .container {
     display: flex;
     gap: 3rem;
@@ -22,12 +23,14 @@ const FooterStyles = styled.div`
   .footer__col1__title {
     font-size: 3.5rem;
     margin-bottom: 1rem;
+    color: var(--white);
   }
   .copyright {
     background-color: var(--deep-bg);
     text-align: left;
-    padding: 1rem 0;
+    padding: 1.4rem 0;
     margin-top: 5rem;
+    border-top: 1px solid var(--surface-border);
     .para {
       margin-left: 0;
     }
@@ -96,7 +99,7 @@ export default function Footer() {
         </div>
         <div className="footer__col3">
           <FooterCol
-            heading="Cotact Info"
+            heading="Contact Info"
             links={[
               {
                 title: "+48691636192",
@@ -118,6 +121,10 @@ export default function Footer() {
             heading="Social Links"
             links={[
               {
+                title: "GitHub",
+                path: "https://github.com/Xymoh",
+              },
+              {
                 title: "Instagram",
                 path: "https://www.instagram.com/szy.rus/",
               },
@@ -134,7 +141,7 @@ export default function Footer() {
       </div>
       <div className="copyright">
         <div className="container">
-          <PText>© 2025 - Szymon Ruszkiewicz</PText>
+          <PText>© 2026 - Szymon Ruszkiewicz</PText>
         </div>
       </div>
     </FooterStyles>

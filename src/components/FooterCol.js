@@ -6,16 +6,21 @@ const ColStyle = styled.div`
 .heading {
   font-size: 2.4rem;
   margin-bottom: 2rem;
+  color: var(--white);
 }
 li {
   margin-bottom: 1rem;
 }
 a {
-  font-size: 1.8rem;
-  border-radius: 4px;
-  transition: 0.3s ease background-color;
+  font-size: 1.6rem;
+  color: var(--ink-1);
+  border-radius: 6px;
+  padding: 0.2rem 0.5rem;
+  display: inline-block;
+  transition: 0.25s ease background-color, 0.25s ease color;
       &:hover {
-        background-color: var(--gray-2);
+        background-color: rgba(255, 255, 255, 0.08);
+        color: var(--white);
       }
 }
 `;

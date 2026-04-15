@@ -5,38 +5,65 @@ import styled from "styled-components";
 import projectImg from "../assets/images/placeholder.jpg"
 
 const ProjectItemStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+    background: var(--surface);
+    border: 1px solid var(--surface-border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: 0.25s ease transform, 0.25s ease box-shadow, 0.25s ease border-color;
+    &:hover {
+      transform: translateY(-4px);
+      border-color: rgba(99, 209, 191, 0.5);
+      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.45);
+    }
     .projectItem__img {
         width: 100%;
-        height: 350px;
+        height: 300px;
         overflow: hidden;
-        border-radius: 12px;
+        border-radius: 0;
         display: inline-block;
-        border: 3px solid var(--gray-2);
-       
+        background: rgba(255, 255, 255, 0.02);
+
         img {
           height: 100%;
            object-fit: contain;
+           transition: 0.35s ease transform;
         }
     }
+    .projectItem__img:hover img {
+      transform: scale(1.02);
+    }
     .projectItem__info {
-      margin-top: 1rem;
-      background-color: var(--deep-dark);
-      padding: 1rem;
-      border-radius: 12px;
+      margin-top: 0;
+      background-color: transparent;
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
     .projectItem__title {
-      font-size: 2.2rem;
+      font-size: 2.3rem;
+      color: var(--white);
+      min-height: 5.6rem;
     }
     .projectItem__desc {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-family: 'RobotoMono Regular';
       margin-top: 1rem;
+      line-height: 1.5;
+      color: var(--ink-1);
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 11.3rem;
     }
-    /* @media only screen and (max-width: 768px) {
-      .projectItem__img {
-        height: 350px;
-      }
-    } */
+    .projectItem__link {
+      color: inherit;
+    }
 `;
 
 export default function ProjectItem({
@@ -46,15 +73,38 @@ export default function ProjectItem({
   url = "/projects"
 }) {
   const projectUrl = url || "/projects";
+  const isExternal = /^https?:\/\//i.test(projectUrl);
+
+  const LinkWrapper = ({ children, className }) => {
+    if (isExternal) {
+      return (
+        <a
+          href={projectUrl}
+          className={className}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {children}
+        </a>
+      );
+    }
+
+    return (
+      <Link to={projectUrl} className={className}>
+        {children}
+      </Link>
+    );
+  };
+
   return (
     <ProjectItemStyle>
-      <Link to={projectUrl} className="projectItem__img" target="_blank">
+      <LinkWrapper className="projectItem__img projectItem__link">
         <img src={img} alt="project img" />
-      </Link>
+      </LinkWrapper>
       <div className="projectItem__info">
-        <Link to={projectUrl} target="_blank">
+        <LinkWrapper className="projectItem__link">
           <h3 className="projectItem__title">{title}</h3>
-        </Link>
+        </LinkWrapper>
         <p className="projectItem__desc">{desc}</p>
       </div>
     </ProjectItemStyle>

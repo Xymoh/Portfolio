@@ -6,45 +6,57 @@ import { MdClose, MdMenu } from "react-icons/md";
 const NavMenuStyles = styled.div`
   position: fixed;
   z-index: 100;
-  top: 0;
+  top: 1.2rem;
   left: 0;
   width: 100%;
-  padding: 1rem 0;
-  background: #262626;
+  padding: 0.8rem 0;
   ul {
-    max-width: 1200px;
+    max-width: 720px;
     margin: 0 auto;
     width: 90%;
+    background: rgba(12, 18, 28, 0.8);
+    backdrop-filter: blur(14px);
+    border: 1px solid var(--surface-border);
+    box-shadow: var(--shadow-soft);
+    border-radius: 999px;
+    padding: 0.7rem;
     text-align: center;
     li {
       display: inline-block;
-      border-radius: 8px;
-      transition: 0.3s ease background-color;
+      border-radius: 999px;
+      transition: 0.25s ease background-color;
       &:hover {
-        background-color: #1e1e1e;
+        background-color: rgba(99, 209, 191, 0.18);
       }
     }
     a {
       display: inline-block;
       font-family: "RobotoMono Regular";
-      padding: 1rem 2rem;
-      font-size: 2rem;
-      color: gray;
+      padding: 0.9rem 1.8rem;
+      font-size: 1.7rem;
+      color: var(--ink-1);
       outline: none;
       text-decoration: none;
+      border-radius: 999px;
+      transition: 0.2s ease color;
     }
     .active {
-      color: white;
+      color: var(--white);
+      background: linear-gradient(135deg, rgba(74, 193, 176, 0.35), rgba(61, 127, 203, 0.35));
     }
   }
   .mobile-menu-icon {
     position: absolute;
-    right: 1rem;
-    top: 1rem;
+    right: 2rem;
+    top: 0.7rem;
     width: 4rem;
     cursor: pointer;
     display: none;
     outline: none;
+    border-radius: 8px;
+    background: rgba(12, 18, 28, 0.75);
+    border: 1px solid var(--surface-border);
+    padding: 0.2rem;
     * {
         pointer-events: none;
     }
@@ -53,6 +65,7 @@ const NavMenuStyles = styled.div`
     display: none;
   }
   @media only screen and (max-width: 768px) {
+    top: 0;
     padding: 0;
     .hide-item {
       transform: translateY(calc(-100% - var(--top)));
@@ -61,13 +74,15 @@ const NavMenuStyles = styled.div`
       display: block;
     }
     .navItems {
-      --top: 1rem;
+      --top: 1.2rem;
       transition: 0.3s ease transform;
-      background-color: #1e1e1e;
+      background: rgba(12, 18, 28, 0.95);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--surface-border);
       padding: 2rem;
       width: 90%;
       max-width: 300px;
-      border-radius: 12px;
+      border-radius: 18px;
       position: absolute;
       right: 1rem;
       top: var(--top);

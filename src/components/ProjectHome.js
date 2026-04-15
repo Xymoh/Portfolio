@@ -22,19 +22,33 @@ const ProjectSectionStyle = styled.div`
     margin-top: 5rem;
   }
   .swiper-container {
-    padding-top: 8rem;
+    padding-top: 6rem;
     max-width: 100%;
   }
   .swiper-button-next,
   .swiper-button-prev {
-    color: #fff;
-    width: 3rem;
-    height: 3rem;
+    color: var(--accent);
+    width: 4.4rem;
+    height: 4.4rem;
     z-index: 10;
+    background: rgba(12, 18, 28, 0.7);
+    border: 1px solid var(--surface-border);
+    border-radius: 999px;
+    backdrop-filter: blur(8px);
+  }
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+  .swiper-slide {
+    height: auto;
+    display: flex;
   }
   .swiper-button-next:hover,
   .swiper-button-prev:hover {
-    color:rgb(255, 197, 197);
+    color: var(--white);
+    background: rgba(99, 209, 191, 0.2);
   }
 `;
 
@@ -42,7 +56,10 @@ export default function ProjectSection() {
   return (
     <ProjectSectionStyle>
       <div className="container">
-        <SectionTitle heading="Projects" subheading="Some of my recent works, swipe left or right to see more" />
+        <SectionTitle
+          heading="Projects"
+          subheading="A curated selection, swipe to explore"
+        />
         <div className="projects__allItems">
           <Swiper
             spaceBetween={30}
@@ -58,7 +75,6 @@ export default function ProjectSection() {
             }}
           >
             {projects.map((project, index) => {
-              console.log("Project URL:", project.url);
               if (index >= 5) return null;
               return (
                 <SwiperSlide key={project.id}>

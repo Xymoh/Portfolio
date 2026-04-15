@@ -14,7 +14,7 @@ const testimonials = [
     desc: "In some ways, programing is like painting. You start with a blank canvas and certain basic raw materials. You use a combination of science, art, and craft to determine what to do with them.",
   },
   {
-    id: 1,
+    id: 3,
     name: "Chris Pine",
     title: "Writer",
     org: "Learn to Program",

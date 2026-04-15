@@ -13,8 +13,24 @@ import portfolio from "../images/portfolio.png";
 import wcfLocalChat from "../images/wcfLocalChat.png";
 import emotionrt from "../images/Happy.png";
 import unscrambleWords from "../images/unscrambleWords.png";
+import riyadBankIcon from "../images/riyadbank-icon.png";
+import riyadBankPayIcon from "../images/riyadbankpay-icon.png";
 
 const projects = [
+  {
+    id: uuidv4(),
+    name: "RiyadBank",
+    desc: "RiyadBank mobile app experience focused on secure digital banking, streamlined account management, and smooth customer flows for everyday financial operations.",
+    img: riyadBankIcon,
+    url: "https://www.riyadbank.com/",
+  },
+  {
+    id: uuidv4(),
+    name: "RBPay",
+    desc: "RBPay is a modern payments app concept built around speed, trust, and usability, enabling fast transfers, bill payments, and wallet-first interactions.",
+    img: riyadBankPayIcon,
+    url: "https://www.riyadbank.com/",
+  },
   {
     id: uuidv4(),
     name: "Sea Service",

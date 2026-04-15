@@ -128,7 +128,7 @@ export default function About() {
               </PText>
             </div>
             <a
-              href="https://drive.google.com/file/d/1d4Z-_Nck8VLiLqf6S9y_R7ImKRHUtAEa/view?usp=sharing"
+              href="https://drive.google.com/file/d/1qy7fJJdiPFhvAF5TR8uLvbff9EjmiU2c/view?usp=drive_link"
               className="about__info__downloadCV"
               target="_blank"
               rel="noreferrer"
@@ -151,98 +151,127 @@ export default function About() {
           <div className="about__info__item">
             <h1 className="about__info__heading">My Skills</h1>
             <AboutInfoItem
-              title="Game Dev"
-              items={["Unity", "C#", "Vuforia", "Unreal"]}
-            />
-            <AboutInfoItem
-              title="BackEnd"
-              items={[
-                "Ruby on Rails",
-                "Node.js",
-                "Postman",
-                "PostgreSQL",
-                "MySQL",
-                "Firebase",
-              ]}
-            />
-            <AboutInfoItem
               title="FrontEnd"
               items={[
                 "React",
-                "React-Native",
-                "Xamarin",
                 "HTML",
-                "XAML",
+                "HTML5",
                 "CSS",
                 "SCSS",
-                "Ionic",
-                "Expo",
+                "SASS",
+                "BEM",
                 "JavaScript",
                 "TypeScript",
-                "Kotlin",
-                "Swift",
-                "Canva",
-                "Photoshop",
-                "Figma",
+                "Ionic",
+              ]}
+            />
+            <AboutInfoItem
+              title="MobileDev"
+              items={[
+                "React Native",
+                "Expo",
+                "Bare CLI",
+                "Android",
+                "iOS",
+                "Xamarin",
+                "XAML",
+                "Kotlin (basics)",
+                "Swift (basics)",
+              ]}
+            />
+            <AboutInfoItem
+              title="Game Dev"
+              items={[
+                "Unity",
+                "Vuforia AR",
+                "C#",
+                "Game Prototyping",
+              ]}
+            />
+            <AboutInfoItem
+              title="AI Tools"
+              items={[
+                "GitHub Copilot",
+                "Claude",
+                "Roo",
+                "Stable Diffusion",
+                "ComfyUI",
+                "Ollama",
               ]}
             />
             <AboutInfoItem
               title="Tools"
               items={[
                 "Git",
-                "Docker",
                 "Postman",
                 "Apollo GraphQL",
-                "DBeaver",
                 "VS Code",
                 "Android Studio",
-                "XCode",
-                "Unity",
+                "Xcode",
                 "Jira",
                 "Trello",
-                "Slack",
-                "Discord",
-                "Zoom",
-                "Basecamp",
+                "ClickUp",
+                "Figma",
+                "Canva",
+              ]}
+            />
+            <AboutInfoItem
+              title="BackEnd"
+              items={[
+                "GraphQL",
+                "REST APIs",
+                "Node.js",
+                "Express.js",
+                "Ruby on Rails",
+                "PostgreSQL",
+                "MySQL",
+                "Firebase",
               ]}
             />
             <AboutInfoItem
               title="Soft Skills"
               items={[
-                "Teamwork",
-                "Problem Solving",
+                "Project Management",
+                "Client Communication",
+                "Technical Estimation",
+                "Problem-Solving",
+                "Working Under Pressure",
+                "Cross-Functional Collaboration",
                 "Communication",
-                "Time Management",
                 "Adaptability",
-                "Creativity",
-                "Work Ethic",
-                "Leadership",
               ]}
             />
             <AboutInfoItem
               title="Languages"
               items={[
                 "Polish - Native",
-                "English - C1",
+                "English - C2",
                 "Serbian - B1",
-                "Japanese - A2",
-                "Chinese - A1",
+                "Japanese - JLPT N5",
               ]}
             />
           </div>
           <div className="about__info__item">
             <h1 className="about__info__heading">Experience</h1>
             <AboutInfoItem
-              title="June 2022 - Present"
-              items={["Software Developer at TDCM.IO"]}
+              title="June 2025 - Present"
+              variant="list"
+              items={[
+                "Mobile Software Developer at Efigence in Warsaw, Poland",
+                "Maintaining the Riyad Bank React Native banking frontend",
+                "Working with backend, UI/UX, QA, and international stakeholders in Agile",
+                "Stack: React Native, TypeScript, Redux, React Navigation, APIMockup, Git",
+              ]}
             />
             <AboutInfoItem
-              title="March 2021 - August 2021"
-              items={["React + Django REST API Internship at VascoSky"]}
-            />
-            <AboutInfoItem
-              title="March 2020 - June 2022"
-              items={["FQA Tester at Keywords Studio"]}
+              title="June 2022 - June 2025"
+              variant="list"
+              items={[
+                "Software Engineer at TDCM.io in Lodz, Poland",
+                "Built and deployed cross-platform mobile apps for startups",
+                "Handled architecture decisions, estimations, and client communication",
+                "Stack: React Native, TypeScript, React, GraphQL, Firebase, REST API, Ruby on Rails",
+              ]}
             />
           </div>
         </div>
