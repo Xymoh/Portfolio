@@ -5,6 +5,7 @@ import Button from "./Button";
 import PText from "./PText";
 import SectionTitle from "./SectionTitle";
 import AboutImage from "../assets/images/about-me-img-2.jpg";
+import Reveal from "./Reveal";
 
 const AboutSectionStyle = styled.div`
   padding: 10rem 0;
@@ -17,6 +18,39 @@ const AboutSectionStyle = styled.div`
   .aboutSection__left,
   .aboutSection__right {
     flex: 1;
+  }
+  .aboutSection__photo {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow), 0 0 0 1px rgba(255, 255, 255, 0.04);
+    transition: transform 1.1s var(--ease-smooth), box-shadow 1.1s var(--ease-smooth);
+    img {
+      display: block;
+      transition: transform 1.6s var(--ease-smooth);
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(255, 255, 255, 0) 30%
+      );
+    }
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--glass-shadow-hover);
+    }
+    &:hover img {
+      transform: scale(1.035);
+    }
   }
   .section-title {
     text-align: left;
@@ -76,6 +110,7 @@ export default function AboutSection() {
     <AboutSectionStyle>
       <div className="container">
         <div className="aboutSection__left">
+          <Reveal>
           <SectionTitle
             subheading="Let me introduce myself"
             heading="About me"
@@ -92,9 +127,14 @@ export default function AboutSection() {
             <Button btnLink="/services" btnText="Services"></Button>
             <Button btnLink="/about" btnText="Read More" outline></Button>
           </div>
+          </Reveal>
         </div>
         <div className="aboutSection__right">
-          <img src={AboutImage} alt="about me" />
+          <Reveal delay={150}>
+            <div className="aboutSection__photo">
+              <img src={AboutImage} alt="about me" />
+            </div>
+          </Reveal>
         </div>
       </div>
     </AboutSectionStyle>

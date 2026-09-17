@@ -1,7 +1,17 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { MdClose, MdMenu } from "react-icons/md";
+
+import { glass } from "../styles/glass";
+
+const links = [
+  { to: "/", label: "Home", end: true },
+  { to: "/about", label: "About" },
+  { to: "/services", label: "Services" },
+  { to: "/projects", label: "Projects" },
+  { to: "/contact", label: "Contact" },
+];
 
 const NavMenuStyles = styled.div`
   position: fixed;
@@ -10,179 +20,249 @@ const NavMenuStyles = styled.div`
   left: 0;
   width: 100%;
   padding: 0.8rem 0;
-  ul {
+  .navItems {
+    ${glass}
+    --glass-bg: var(--glass-bg-strong);
     max-width: 780px;
     margin: 0 auto;
     width: 90%;
-    background: rgba(12, 18, 28, 0.8);
-    backdrop-filter: blur(14px);
-    border: 1px solid var(--surface-border);
-    box-shadow: var(--shadow-soft);
     border-radius: 999px;
     padding: 0.7rem;
     text-align: center;
-    li {
-      display: inline-block;
-      border-radius: 999px;
-      transition: 0.25s ease background-color;
-      &:hover {
-        background-color: rgba(99, 209, 191, 0.18);
-      }
+    &::after {
+      display: none;
     }
-    a {
-      display: inline-block;
-      font-family: "RobotoMono Regular";
-      padding: 0.9rem 1.8rem;
-      font-size: 1.7rem;
-      color: var(--ink-1);
-      outline: none;
-      text-decoration: none;
-      border-radius: 999px;
-      transition: 0.2s ease color;
+  }
+  /* Glass pill that slides between the active links. */
+  .navItems__indicator {
+    position: absolute;
+    z-index: 0;
+    top: var(--top);
+    left: var(--left);
+    width: var(--w);
+    height: var(--h);
+    border-radius: 999px;
+    pointer-events: none;
+    opacity: var(--visible, 0);
+    background: linear-gradient(
+      135deg,
+      rgba(99, 209, 191, 0.34),
+      rgba(61, 127, 203, 0.34)
+    );
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35),
+      0 8px 20px -8px rgba(99, 209, 191, 0.55);
+    &[data-animate="true"] {
+      transition: left 0.55s var(--ease-spring), width 0.55s var(--ease-spring),
+        opacity 0.3s var(--ease-out);
     }
-    .active {
+  }
+  li {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    border-radius: 999px;
+  }
+  a {
+    display: inline-block;
+    font-family: "RobotoMono Regular";
+    padding: 0.9rem 1.8rem;
+    font-size: 1.7rem;
+    color: var(--ink-1);
+    outline: none;
+    text-decoration: none;
+    border-radius: 999px;
+    transition: color 0.5s var(--ease-smooth), background-color 0.5s var(--ease-smooth),
+      transform 0.6s var(--ease-smooth);
+    &:hover {
       color: var(--white);
-      background: linear-gradient(135deg, rgba(74, 193, 176, 0.35), rgba(61, 127, 203, 0.35));
+      background: rgba(255, 255, 255, 0.06);
+    }
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+  a.active {
+    color: var(--white);
+  }
+  .mobile-menu-icon,
+  .closeNavIcon {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    * {
+      pointer-events: none;
     }
   }
   .mobile-menu-icon {
+    ${glass}
+    --glass-bg: var(--glass-bg-strong);
     position: absolute;
     right: 2rem;
-    top: 0.7rem;
-    width: 4rem;
-    cursor: pointer;
-    display: none;
-    outline: none;
-    border-radius: 8px;
-    background: rgba(12, 18, 28, 0.75);
-    border: 1px solid var(--surface-border);
-    padding: 0.2rem;
-    * {
-        pointer-events: none;
+    top: 0.4rem;
+    width: 4.6rem;
+    height: 4.6rem;
+    padding: 0.9rem;
+    border-radius: 999px;
+    transition: transform 0.4s var(--ease-spring);
+    &:active {
+      transform: scale(0.9);
     }
-  }
-  .closeNavIcon {
-    display: none;
+    &::after {
+      display: none;
+    }
   }
   @media only screen and (max-width: 768px) {
     top: 0;
     padding: 0;
-    .hide-item {
-      transform: translateY(calc(-100% - var(--top)));
-    }
     .mobile-menu-icon {
-      display: block;
+      display: flex;
+    }
+    .navItems__indicator {
+      display: none;
     }
     .navItems {
       --top: 1.2rem;
-      transition: 0.3s ease transform;
-      background: rgba(12, 18, 28, 0.95);
-      backdrop-filter: blur(14px);
-      border: 1px solid var(--surface-border);
-      padding: 2rem;
-      width: 90%;
-      max-width: 300px;
-      border-radius: 18px;
       position: absolute;
       right: 1rem;
       top: var(--top);
-      .closeNavIcon {
-        display: block;
-        width: 3rem;
-        margin: 0 0 0 auto;
-        cursor: pointer;
-        * {
-          pointer-events: none;
-        }
+      width: 90%;
+      max-width: 300px;
+      border-radius: var(--radius-lg);
+      padding: 1.6rem;
+      text-align: left;
+      transform-origin: top right;
+      transition: transform 0.45s var(--ease-spring), opacity 0.3s var(--ease-out),
+        visibility 0s linear 0s;
+      &.hide-item {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.94);
+        pointer-events: none;
+        visibility: hidden;
+        transition: transform 0.35s var(--ease-out), opacity 0.25s var(--ease-out),
+          visibility 0s linear 0.35s;
       }
-      li {
-        display: block;
-        margin-bottom: 1rem;
-      }
+    }
+    .closeNavIcon {
+      display: flex;
+      width: 3.6rem;
+      height: 3.6rem;
+      padding: 0.6rem;
+      margin: 0 0 0.8rem auto;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--glass-border);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    li {
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+    a {
+      display: block;
+      padding: 1.1rem 1.6rem;
+    }
+    a.active {
+      background: linear-gradient(
+        135deg,
+        rgba(99, 209, 191, 0.3),
+        rgba(61, 127, 203, 0.3)
+      );
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
     }
   }
 `;
 
 export default function NavMenu() {
-  const [showNav, SetShowNav] = useState(false);
+  const [showNav, setShowNav] = useState(false);
+  const [indicator, setIndicator] = useState(null);
+  const [animate, setAnimate] = useState(false);
+  const navRef = useRef(null);
+  const { pathname } = useLocation();
+
+  // Measure the active link so the indicator can slide to it.
+  useLayoutEffect(() => {
+    const measure = () => {
+      const nav = navRef.current;
+      const active = nav && nav.querySelector("a.active");
+      if (!active) {
+        setIndicator(null);
+        return;
+      }
+      const item = active.parentElement;
+      setIndicator({
+        left: item.offsetLeft,
+        top: item.offsetTop,
+        w: item.offsetWidth,
+        h: item.offsetHeight,
+      });
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [pathname]);
+
+  // Enable the slide transition only after the first paint, so the
+  // indicator appears in place instead of flying in from the corner.
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setAnimate(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
+
+  const indicatorStyle = indicator
+    ? {
+        "--left": `${indicator.left}px`,
+        "--top": `${indicator.top}px`,
+        "--w": `${indicator.w}px`,
+        "--h": `${indicator.h}px`,
+        "--visible": 1,
+      }
+    : undefined;
+
   return (
     <NavMenuStyles>
-      <div
+      <button
+        type="button"
         className="mobile-menu-icon"
-        onClick={() => SetShowNav(!showNav)}
-        role="button"
-        onKeyDown={() => SetShowNav(!showNav)}
-        tabIndex={0}
+        aria-label="Open menu"
+        aria-expanded={showNav}
+        onClick={() => setShowNav(true)}
       >
         <MdMenu />
-      </div>
-      <ul className={!showNav ? "navItems hide-item" : "navItems"}>
-        <div
+      </button>
+      <nav
+        ref={navRef}
+        className={showNav ? "navItems" : "navItems hide-item"}
+        aria-label="Main"
+      >
+        <button
+          type="button"
           className="closeNavIcon"
-          onClick={() => SetShowNav(!showNav)}
-          role="button"
-          onKeyDown={() => SetShowNav(!showNav)}
-          tabIndex={0}
+          aria-label="Close menu"
+          onClick={() => setShowNav(false)}
         >
           <MdClose />
-        </div>
-        <li>
-          <NavLink
-            to="/"
-            exact
-            onClick={() => SetShowNav(!showNav)}
-            role="button"
-            onKeyDown={() => SetShowNav(!showNav)}
-            tabIndex={0}
-          >
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/about"
-            onClick={() => SetShowNav(!showNav)}
-            role="button"
-            onKeyDown={() => SetShowNav(!showNav)}
-            tabIndex={0}
-          >
-            About
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/services"
-            onClick={() => SetShowNav(!showNav)}
-            role="button"
-            onKeyDown={() => SetShowNav(!showNav)}
-            tabIndex={0}
-          >
-            Services
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/projects"
-            onClick={() => SetShowNav(!showNav)}
-            role="button"
-            onKeyDown={() => SetShowNav(!showNav)}
-            tabIndex={0}
-          >
-            Projects
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/contact"
-            onClick={() => SetShowNav(!showNav)}
-            role="button"
-            onKeyDown={() => SetShowNav(!showNav)}
-            tabIndex={0}
-          >
-            Contact
-          </NavLink>
-        </li>
-      </ul>
+        </button>
+        <span
+          className="navItems__indicator"
+          data-animate={animate}
+          style={indicatorStyle}
+          aria-hidden="true"
+        />
+        <ul>
+          {links.map((link) => (
+            <li key={link.to}>
+              <NavLink
+                to={link.to}
+                end={link.end}
+                onClick={() => setShowNav(false)}
+              >
+                {link.label}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </NavMenuStyles>
   );
 }

@@ -6,6 +6,8 @@ import AboutImg from "../assets/images/szymonRuszkiewicz.png";
 import AboutInfoItem from "../components/AboutInfoItem";
 import ContactBanner from "../components/ContactBanner";
 import Button from "../components/Button";
+import Reveal from "../components/Reveal";
+import { glassLite } from "../styles/glass";
 
 const AboutPageStyles = styled.div`
   padding: 20rem 0 10rem 0;
@@ -20,17 +22,49 @@ const AboutPageStyles = styled.div`
   }
   .right {
     flex: 2;
+  }
+  .about__photo {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow), 0 0 0 1px rgba(255, 255, 255, 0.04);
+    transition: transform 1.1s var(--ease-smooth), box-shadow 1.1s var(--ease-smooth);
     img {
-      border: 2px solid var(--gray-1);
+      display: block;
+      transition: transform 1.6s var(--ease-smooth);
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(255, 255, 255, 0) 30%
+      );
+    }
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--glass-shadow-hover);
+    }
+    &:hover img {
+      transform: scale(1.035);
     }
   }
   .about__subheading {
     font-size: 2.2rem;
     margin-bottom: 2rem;
     span {
-      background-color: var(--deep-dark);
-      padding: 0.5rem;
-      border-radius: 8px;
+      ${glassLite}
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      border-radius: 999px;
+      color: var(--white);
     }
   }
   .about__heading {
@@ -41,25 +75,6 @@ const AboutPageStyles = styled.div`
     margin-bottom: 4rem;
     .para {
       max-width: 100%;
-    }
-  }
-  .about__info__downloadCV {
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
-
-    margin-top: 2rem;
-    font-size: 2.2rem;
-    background-color: ${(props) => (props.outline ? "transparent" : "grey")};
-    padding: 0.7em 2em;
-    border-radius: 8px;
-    display: inline-block;
-    border: 2px solid grey;
-    color: ${(props) => (props.outline ? "grey" : "black")};
-    text-decoration: none;
-    transition: 0.3s ease background-color;
-    &:hover {
-      background-color: var(--gray-2);
     }
   }
   .about__actions {
@@ -87,9 +102,6 @@ const AboutPageStyles = styled.div`
       flex-direction: column;
       gap: 5rem;
     }
-    .about__info__downloadCV {
-      font-size: 1.8rem;
-    }
     .about__subheading {
       font-size: 1.8rem;
     }
@@ -108,6 +120,7 @@ export default function About() {
       <div className="container">
         <div className="top-section">
           <div className="left">
+            <Reveal>
             <p className="about__subheading">
               Hi, I am <span>Szymon Ruszkiewicz</span>
             </p>
@@ -142,22 +155,24 @@ export default function About() {
               </PText>
             </div>
             <div className="about__actions">
-              <a
+              <Button
                 href="https://drive.google.com/file/d/1qy7fJJdiPFhvAF5TR8uLvbff9EjmiU2c/view?usp=drive_link"
-                className="about__info__downloadCV"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Download CV
-              </a>
+                btnText="Download CV"
+              />
               <Button btnLink="/services" btnText="See services" outline />
             </div>
+            </Reveal>
           </div>
           <div className="right">
-            <img src={AboutImg} alt="Szymon Ruszkiewicz img" />
+            <Reveal delay={150}>
+              <div className="about__photo">
+                <img src={AboutImg} alt="Szymon Ruszkiewicz img" />
+              </div>
+            </Reveal>
           </div>
         </div>
         <div className="about__info__items">
+          <Reveal>
           <div className="about__info__item">
             <h1 className="about__info__heading">Work with me</h1>
             <AboutInfoItem
@@ -172,6 +187,8 @@ export default function About() {
               ]}
             />
           </div>
+          </Reveal>
+          <Reveal>
           <div className="about__info__item">
             <h1 className="about__info__heading">Experience</h1>
             <AboutInfoItem
@@ -195,20 +212,22 @@ export default function About() {
               ]}
             />
           </div>
+          </Reveal>
+          <Reveal>
           <div className="about__info__item">
             <h1 className="about__info__heading">My Skills</h1>
             <AboutInfoItem
               title="FrontEnd"
               items={[
                 "React",
-                "HTML",
+                "Angular",
+                "TypeScript",
+                "JavaScript",
                 "HTML5",
                 "CSS",
-                "SCSS",
-                "SASS",
+                "SCSS / SASS",
+                "styled-components",
                 "BEM",
-                "JavaScript",
-                "TypeScript",
                 "Ionic",
               ]}
             />
@@ -236,18 +255,37 @@ export default function About() {
               ]}
             />
             <AboutInfoItem
-              title="Generative AI"
+              title="AI Engineering"
               items={[
-                "ComfyUI",
-                "Custom workflows",
-                "LoRA training",
-                "Stable Diffusion",
-                "Ollama",
+                "LLM integration",
+                "Prompt engineering",
+                "Local LLMs (Ollama)",
+                "ONNX model inference",
+                "Dataset tagging & curation",
+                "Python",
               ]}
             />
             <AboutInfoItem
-              title="AI Dev Tools"
-              items={["GitHub Copilot", "Claude", "Roo"]}
+              title="Generative AI"
+              items={[
+                "ComfyUI",
+                "Custom node workflows",
+                "LoRA training",
+                "Stable Diffusion",
+                "Anima",
+                "Image pipelines",
+                "Civitai publishing",
+              ]}
+            />
+            <AboutInfoItem
+              title="AI-Assisted Dev"
+              items={[
+                "Claude Code",
+                "Claude",
+                "GitHub Copilot",
+                "Roo Code",
+                "AI pair programming",
+              ]}
             />
             <AboutInfoItem
               title="Tools"
@@ -301,6 +339,8 @@ export default function About() {
               ]}
             />
           </div>
+          </Reveal>
+          <Reveal>
           <div className="about__info__item">
             <h1 className="about__info__heading">Education</h1>
             <AboutInfoItem
@@ -308,6 +348,7 @@ export default function About() {
               items={["University of Economics in Katowice"]}
             />
           </div>
+          </Reveal>
         </div>
       </div>
       <ContactBanner />

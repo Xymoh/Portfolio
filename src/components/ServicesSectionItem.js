@@ -3,40 +3,36 @@ import { Link } from "react-router-dom";
 import { MdDesktopMac } from "react-icons/md";
 import styled from "styled-components";
 
+import { glass, glassHover, iconWell } from "../styles/glass";
+
 const ItemStyles = styled.div`
-  position: relative;
+  ${glass}
+  ${glassHover}
   display: flex;
   flex-direction: column;
   height: 100%;
   padding: 2.6rem 2.2rem;
   text-align: left;
-  background: var(--surface);
-  border: 1px solid
-    ${(props) =>
-      props.$highlight ? "rgba(99, 209, 191, 0.55)" : "var(--surface-border)"};
-  border-radius: 16px;
-  box-shadow: var(--shadow-soft);
-  transition: 0.25s ease transform, 0.25s ease box-shadow,
-    0.25s ease border-color;
-  &:hover {
-    transform: translateY(-4px);
-    border-color: rgba(99, 209, 191, 0.5);
-    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.45);
-  }
+  border-radius: var(--radius-lg);
+  ${(props) =>
+    props.$highlight &&
+    `
+      border-color: rgba(99, 209, 191, 0.45);
+      box-shadow: var(--glass-rim), var(--glass-shadow),
+        0 0 0 1px rgba(99, 209, 191, 0.12), 0 0 40px -12px rgba(99, 209, 191, 0.5);
+    `}
   .servicesItem__icon {
+    ${iconWell}
     width: 5.2rem;
     height: 5.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    background: rgba(99, 209, 191, 0.14);
-    color: var(--accent);
+    transition: transform var(--hover-duration) var(--ease-smooth);
     svg {
       width: 2.8rem;
       height: 2.8rem;
-      color: var(--accent);
     }
+  }
+  &:hover .servicesItem__icon {
+    transform: translateY(-2px) scale(1.06) rotate(-3deg);
   }
   .servicesItem__tag {
     display: inline-block;
@@ -63,9 +59,11 @@ const ItemStyles = styled.div`
     margin-top: 2rem;
     font-size: 1.4rem;
     color: var(--accent);
-    transition: 0.2s ease color;
+    transition: color 0.5s var(--ease-smooth), transform 0.7s var(--ease-smooth);
+    display: inline-block;
     &:hover {
       color: var(--white);
+      transform: translateX(3px);
     }
   }
 `;
@@ -79,7 +77,7 @@ export default function ServicesSectionItem({
   link = "/services",
 }) {
   return (
-    <ItemStyles $highlight={highlight}>
+    <ItemStyles $highlight={highlight} className="glass">
       <div className="servicesItem__icon">{icon}</div>
       {tag && <span className="servicesItem__tag">{tag}</span>}
       <h3 className="servicesItem__title">{title}</h3>

@@ -5,6 +5,7 @@ import SectionTitle from "./SectionTitle";
 import ServicesSectionItem from "./ServicesSectionItem";
 import Button from "./Button";
 import PText from "./PText";
+import Reveal from "./Reveal";
 import services from "../assets/data/services";
 
 const ServicesItemStyles = styled.div`
@@ -46,24 +47,27 @@ export default function ServiceSection() {
           </PText>
         </div>
         <div className="services__allItems">
-          {services.map((service) => {
+          {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <ServicesSectionItem
-                key={service.id}
-                icon={<Icon />}
-                title={service.title}
-                tag={service.tag}
-                desc={service.short}
-                highlight={service.highlight}
-                link={`/services#${service.id}`}
-              />
+              <Reveal key={service.id} delay={index * 90}>
+                <ServicesSectionItem
+                  icon={<Icon />}
+                  title={service.title}
+                  tag={service.tag}
+                  desc={service.short}
+                  highlight={service.highlight}
+                  link={`/services#${service.id}`}
+                />
+              </Reveal>
             );
           })}
         </div>
-        <div className="services__cta">
-          <Button btnLink="/services" btnText="See all services" outline />
-        </div>
+        <Reveal>
+          <div className="services__cta">
+            <Button btnLink="/services" btnText="See all services" outline />
+          </div>
+        </Reveal>
       </div>
     </ServicesItemStyles>
   );

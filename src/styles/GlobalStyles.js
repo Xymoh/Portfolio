@@ -6,22 +6,6 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     box-sizing: border-box;
   }
-  :root{
-    --dark-bg: #11151d;
-    --gray-1: #d9e1ee;
-    --deep-dark: #1b2433;
-    --gray-2: #2a3446;
-    --white : #f7f9fd;
-    --black: #05070b;
-    --ink-1: #9fb3cc;
-    --ink-2: #7f93ad;
-    --accent: #63d1bf;
-    --accent-2: #f0b46a;
-    --surface: rgba(255, 255, 255, 0.04);
-    --surface-border: rgba(255, 255, 255, 0.12);
-    --shadow-soft: 0 16px 42px rgba(0, 0, 0, 0.35);
-    --deep-bg: #101722;
-  }
   html{
     font-size: 10px;
     font-family: 'RobotoMono Regular';
@@ -35,29 +19,50 @@ const GlobalStyles = createGlobalStyle`
     min-height: 100vh;
     color: var(--gray-1);
   }
-  body::before,
-  body::after{
-    content: '';
+  /* Drifting colour orbs that the glass surfaces blur and refract. */
+  .bg-orbs{
     position: fixed;
-    pointer-events: none;
-    border-radius: 999px;
-    filter: blur(60px);
-    opacity: 0.3;
+    inset: 0;
     z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
   }
-  body::before{
-    width: 380px;
-    height: 380px;
-    left: -120px;
-    top: 18vh;
-    background: #41bca8;
+  .bg-orbs span{
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(70px);
+    opacity: 0.42;
+    will-change: transform;
   }
-  body::after{
+  .bg-orbs span:nth-child(1){
     width: 420px;
     height: 420px;
-    right: -160px;
-    bottom: 10vh;
+    left: -140px;
+    top: 16vh;
+    background: #41bca8;
+    animation: orbDrift 28s ease-in-out infinite;
+  }
+  .bg-orbs span:nth-child(2){
+    width: 460px;
+    height: 460px;
+    right: -180px;
+    bottom: 8vh;
     background: #3d7fcb;
+    animation: orbDrift 34s ease-in-out -8s infinite reverse;
+  }
+  .bg-orbs span:nth-child(3){
+    width: 300px;
+    height: 300px;
+    left: 55%;
+    top: -120px;
+    background: #c98a3e;
+    opacity: 0.2;
+    animation: orbDrift 40s ease-in-out -16s infinite;
+  }
+  @keyframes orbDrift{
+    0%, 100%{ transform: translate3d(0, 0, 0) scale(1); }
+    33%{ transform: translate3d(70px, -50px, 0) scale(1.08); }
+    66%{ transform: translate3d(-40px, 60px, 0) scale(0.95); }
   }
   ul,li{
     list-style: none;
@@ -80,24 +85,52 @@ const GlobalStyles = createGlobalStyle`
     background: rgba(99, 209, 191, 0.3);
     color: var(--white);
   }
+  :focus-visible{
+    outline: 2px solid rgba(99, 209, 191, 0.8);
+    outline-offset: 3px;
+    border-radius: 8px;
+  }
   .container {
     max-width: 1180px;
     width: 90%;
     margin: 0 auto;
   }
-/* Smooth Scroll  */
-  [data-scrollbar] {
-    height: 100vh;
-    overflow: hidden;
-    background-color: var(--deep-bg);
-    .scroll-content {
-      background-color: var(--dark-bg);
+
+  /* Route change: the new page fades up. */
+  .page-enter{
+    animation: pageIn 0.6s var(--ease-out) backwards;
+  }
+  @keyframes pageIn{
+    from{ opacity: 0; transform: translateY(14px); }
+    to{ opacity: 1; transform: none; }
+  }
+
+  /* Scroll reveal, toggled by <Reveal />. */
+  .reveal{
+    opacity: 0;
+    transform: translateY(24px) scale(0.985);
+    transition: opacity 0.8s var(--ease-out), transform 0.9s var(--ease-out);
+  }
+  .reveal.is-visible{
+    opacity: 1;
+    transform: none;
+  }
+
+  @media only screen and (max-width: 768px){
+    .bg-orbs span{
+      filter: blur(50px);
     }
-    .scrollbar-track.scrollbar-track-y {
-      background: var(--deep-dark);
-      .scrollbar-thumb-y {
-        background: var(--gray-1);
-      }
+  }
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    .reveal{
+      opacity: 1;
+      transform: none;
     }
   }
 `;

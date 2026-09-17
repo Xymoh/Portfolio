@@ -47,6 +47,7 @@ const services = [
     ],
     stack: [
       "React",
+      "Angular",
       "TypeScript",
       "Node.js",
       "Ruby on Rails",

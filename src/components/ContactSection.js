@@ -6,6 +6,8 @@ import ContactInfoItem from "./ContactInfoItem";
 import SectionTitle from "./SectionTitle";
 import ContactForm from "./ContactForm";
 import PText from "./PText";
+import Reveal from "./Reveal";
+import { glass } from "../styles/glass";
 
 const ContactSectionStyle = styled.div`
   padding: 10rem 0;
@@ -16,25 +18,15 @@ const ContactSectionStyle = styled.div`
     justify-content: space-between;
     position: relative;
   }
-  .contactSection__wrapper::after {
-    position: absolute;
-    content: "";
-    width: 2px;
-    height: 50%;
-    background-color: var(--gray-1);
-    left: 50%;
-    top: 30%;
-    transform: translate(-50%, -50%);
-  }
   .left {
     width: 100%;
     max-width: 500px;
   }
   .contactSection__hint {
+    ${glass}
     padding: 2.4rem;
-    background: var(--surface);
-    border: 1px solid rgba(99, 209, 191, 0.35);
-    border-radius: 12px;
+    border-color: rgba(99, 209, 191, 0.35);
+    border-radius: var(--radius-lg);
     h3 {
       font-size: 1.9rem;
       font-family: "Montserrat SemiBold";
@@ -72,11 +64,6 @@ const ContactSectionStyle = styled.div`
     max-width: 500px;
     width: 100%;
   }
-  @media only screen and (max-width: 1000px) {
-    .contactSection__wrapper::after {
-      display: none;
-    }
-  }
   @media only screen and (max-width: 768px) {
     .contactSection__wrapper {
       flex-direction: column;
@@ -101,13 +88,17 @@ export default function ContactSection() {
         />
         <div className="contactSection__wrapper">
           <div className="left">
-            <ContactInfoItem icon={<MdLocalPhone />} text="+48 691-636-192" />
-            <ContactInfoItem
-              icon={<MdEmail />}
-              text="szyruszk@gmail.com"
-            />
-            <ContactInfoItem text="Katowice, Poland" />
-            <div className="contactSection__hint">
+            <Reveal>
+              <ContactInfoItem icon={<MdLocalPhone />} text="+48 691-636-192" />
+            </Reveal>
+            <Reveal delay={80}>
+              <ContactInfoItem icon={<MdEmail />} text="szyruszk@gmail.com" />
+            </Reveal>
+            <Reveal delay={160}>
+              <ContactInfoItem text="Katowice, Poland" />
+            </Reveal>
+            <Reveal delay={240}>
+            <div className="contactSection__hint glass">
               <h3>Want an estimate? Tell me about:</h3>
               <ul>
                 <li>What you want to build and who it is for</li>
@@ -120,9 +111,12 @@ export default function ContactSection() {
                 prepare a Statement of Work once we agree on the scope.
               </PText>
             </div>
+            </Reveal>
           </div>
           <div className="right">
-            <ContactForm />
+            <Reveal delay={120}>
+              <ContactForm />
+            </Reveal>
           </div>
         </div>
       </div>

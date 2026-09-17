@@ -21,7 +21,7 @@ export default function ScrollToTop() {
         return;
       }
     }
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: changedPage ? "instant" : "smooth" });
   }, [pathname, hash]);
 
   return null;

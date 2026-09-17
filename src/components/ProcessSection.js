@@ -10,6 +10,8 @@ import {
 
 import SectionTitle from "./SectionTitle";
 import PText from "./PText";
+import Reveal from "./Reveal";
+import { glass, glassHover, iconWell } from "../styles/glass";
 
 const steps = [
   {
@@ -50,45 +52,35 @@ const ProcessStyles = styled.div`
     grid-template-columns: repeat(5, 1fr);
     gap: 2rem;
     margin-top: 5rem;
-    counter-reset: step;
   }
   .step {
-    position: relative;
+    ${glass}
+    ${glassHover}
+    height: 100%;
     padding: 2.4rem 2rem;
-    background: var(--surface);
-    border: 1px solid var(--surface-border);
-    border-radius: 16px;
-    box-shadow: var(--shadow-soft);
-    counter-increment: step;
-    transition: 0.25s ease transform, 0.25s ease border-color;
-    &:hover {
-      transform: translateY(-4px);
-      border-color: rgba(99, 209, 191, 0.5);
-    }
-    &::before {
-      content: "0" counter(step);
-      position: absolute;
-      top: 1.6rem;
-      right: 1.8rem;
-      font-family: "RobotoMono Regular";
-      font-size: 1.3rem;
-      letter-spacing: 0.1em;
-      color: var(--ink-2);
-    }
+    border-radius: var(--radius-lg);
+  }
+  .step__num {
+    position: absolute;
+    top: 1.6rem;
+    right: 1.8rem;
+    font-family: "RobotoMono Regular";
+    font-size: 1.3rem;
+    letter-spacing: 0.1em;
+    color: var(--ink-2);
   }
   .step__icon {
+    ${iconWell}
     width: 4.6rem;
     height: 4.6rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    background: rgba(99, 209, 191, 0.14);
+    transition: transform var(--hover-duration) var(--ease-smooth);
     svg {
       width: 2.4rem;
       height: 2.4rem;
-      color: var(--accent);
     }
+  }
+  .step:hover .step__icon {
+    transform: translateY(-2px) scale(1.06) rotate(-3deg);
   }
   .step__title {
     margin-top: 1.8rem;
@@ -124,24 +116,29 @@ export default function ProcessSection() {
           heading="How we work together"
           subheading="From idea to release"
         />
-        <div className="process__intro">
-          <PText>
-            The estimate is always free and the Statement of Work is part of
-            every project - you know the scope, timeline and cost before any
-            work starts.
-          </PText>
-        </div>
+        <Reveal>
+          <div className="process__intro">
+            <PText>
+              The estimate is always free and the Statement of Work is part of
+              every project - you know the scope, timeline and cost before any
+              work starts.
+            </PText>
+          </div>
+        </Reveal>
         <div className="process__steps">
-          {steps.map((step) => {
+          {steps.map((step, index) => {
             const Icon = step.icon;
             return (
-              <div className="step" key={step.title}>
-                <div className="step__icon">
-                  <Icon />
+              <Reveal key={step.title} delay={index * 80}>
+                <div className="step glass">
+                  <span className="step__num">0{index + 1}</span>
+                  <div className="step__icon">
+                    <Icon />
+                  </div>
+                  <h3 className="step__title">{step.title}</h3>
+                  <p className="step__desc">{step.desc}</p>
                 </div>
-                <h3 className="step__title">{step.title}</h3>
-                <p className="step__desc">{step.desc}</p>
-              </div>
+              </Reveal>
             );
           })}
         </div>

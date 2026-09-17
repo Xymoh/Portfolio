@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import emailjs from "emailjs-com";
 
+import { buttonPrimary } from "../styles/glass";
+
 const FormStyles = styled.form`
   width: 100%;
   .form-group {
@@ -9,22 +11,33 @@ const FormStyles = styled.form`
     margin-bottom: 2rem;
   }
   label {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
+    color: var(--ink-1);
   }
   input,
   textarea {
     width: 100%;
-    font-size: 2rem;
-    padding: 1.2rem;
-    color: var(--gray-1);
-    background-color: var(--deep-dark);
+    font-size: 1.8rem;
+    padding: 1.3rem 1.5rem;
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.05);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     outline: none;
-    border: 2px solid var(--deep-dark);
-    border-radius: 8px;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
     margin-top: 1rem;
-    transition: 0.3s ease border;
+    transition: border-color 0.5s var(--ease-smooth), box-shadow 0.5s var(--ease-smooth),
+      background 0.5s var(--ease-smooth);
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.22);
+    }
     &:focus {
-      border: 2px solid var(--gray-2);
+      border-color: rgba(99, 209, 191, 0.75);
+      background: rgba(255, 255, 255, 0.07);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 0 0 4px rgba(99, 209, 191, 0.15);
     }
   }
   textarea {
@@ -32,19 +45,10 @@ const FormStyles = styled.form`
     resize: vertical;
   }
   button[type="submit"] {
-    background-color: var(--gray-1);
-    color: var(--black);
-    font-size: 2rem;
-    display: inline-block;
-    outline: none;
-    border: none;
-    padding: 1rem 4rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s ease background-color;
-    &:hover {
-      background-color: var(--gray-2);
-    }
+    ${buttonPrimary}
+    font-size: 1.8rem;
+    padding: 0.8em 2.6em;
+    border-radius: 999px;
   }
 `;
 

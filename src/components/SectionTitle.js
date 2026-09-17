@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import Reveal from "./Reveal";
+
 const SectionTitleStyle = styled.div`
   text-align: center;
   p {
@@ -16,6 +18,7 @@ const SectionTitleStyle = styled.div`
     margin-top: 0.9rem;
     text-transform: uppercase;
     color: var(--white);
+    letter-spacing: -0.01em;
     text-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
   }
   @media only screen and (max-width: 768px) {
@@ -34,8 +37,10 @@ export default function SectionTitle({
 }) {
   return (
     <SectionTitleStyle className="section-title">
-      <p>{subheading}</p>
-      <h2>{heading}</h2>
+      <Reveal>
+        <p>{subheading}</p>
+        <h2>{heading}</h2>
+      </Reveal>
     </SectionTitleStyle>
   );
 }

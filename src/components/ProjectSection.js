@@ -5,6 +5,7 @@ import { MdSearch } from "react-icons/md";
 import SectionTitle from "../components/SectionTitle";
 import ProjectItem from "../components/ProjectItem";
 import ProjectInfo from "../assets/data/projects";
+import Reveal from "../components/Reveal";
 
 const ProjectsStyles = styled.div`
   padding: 10rem 0;
@@ -22,15 +23,19 @@ const ProjectsStyles = styled.div`
   .projects__searchBar input {
     width: 100%;
     font-size: 1.7rem;
-    padding: 1.15rem 4rem 1.15rem 1.4rem;
+    padding: 1.15rem 4rem 1.15rem 1.6rem;
     color: var(--white);
-    background: rgba(12, 18, 28, 0.74);
+    background: var(--glass-bg-strong);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    backdrop-filter: blur(14px) saturate(160%);
     border-radius: 999px;
     outline: none;
-    border: 1px solid var(--surface-border);
-    transition: 0.2s ease border;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-rim);
+    transition: border-color 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
     &:focus {
-      border: 1px solid rgba(99, 209, 191, 0.75);
+      border-color: rgba(99, 209, 191, 0.75);
+      box-shadow: var(--glass-rim), 0 0 0 4px rgba(99, 209, 191, 0.15);
     }
   }
   .projects__searchBar input::placeholder {
@@ -92,14 +97,15 @@ export default function Projects() {
           </form>
         </div>
         <div className="projects__allItems">
-          {projectData.map((item) => (
-            <ProjectItem
-              key={item.id}
-              title={item.name}
-              desc={item.desc}
-              img={item.img}
-              url={item.url}
-            />
+          {projectData.map((item, index) => (
+            <Reveal key={item.id} delay={(index % 3) * 80}>
+              <ProjectItem
+                title={item.name}
+                desc={item.desc}
+                img={item.img}
+                url={item.url}
+              />
+            </Reveal>
           ))}
         </div>
       </div>

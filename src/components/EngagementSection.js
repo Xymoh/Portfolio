@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { MdChecklist, MdSchedule, MdHandshake } from "react-icons/md";
 
 import SectionTitle from "./SectionTitle";
+import Reveal from "./Reveal";
+import { glass, glassHover, iconWell } from "../styles/glass";
 
 const models = [
   {
@@ -46,32 +48,44 @@ const EngagementStyles = styled.div`
     margin-top: 5rem;
   }
   .model {
+    ${glass}
+    ${glassHover}
     display: flex;
     flex-direction: column;
+    height: 100%;
     padding: 2.8rem 2.4rem;
-    background: var(--surface);
-    border: 1px solid var(--surface-border);
-    border-radius: 16px;
-    box-shadow: var(--shadow-soft);
-    transition: 0.25s ease transform, 0.25s ease border-color;
+    border-radius: var(--radius-lg);
+    &::after {
+      background: radial-gradient(
+        280px circle at var(--mx, 50%) var(--my, 50%),
+        rgba(240, 180, 106, 0.14),
+        transparent 62%
+      );
+    }
     &:hover {
-      transform: translateY(-4px);
-      border-color: rgba(240, 180, 106, 0.5);
+      border-color: rgba(240, 180, 106, 0.45);
     }
   }
   .model__icon {
+    ${iconWell}
     width: 4.8rem;
     height: 4.8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    background: rgba(240, 180, 106, 0.14);
+    background: linear-gradient(
+      135deg,
+      rgba(240, 180, 106, 0.28),
+      rgba(240, 180, 106, 0.1)
+    );
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.32),
+      0 8px 20px -10px rgba(240, 180, 106, 0.6);
+    transition: transform var(--hover-duration) var(--ease-smooth);
     svg {
       width: 2.5rem;
       height: 2.5rem;
       color: var(--accent-2);
     }
+  }
+  .model:hover .model__icon {
+    transform: translateY(-2px) scale(1.06) rotate(-3deg);
   }
   .model__title {
     margin-top: 1.8rem;
@@ -105,6 +119,7 @@ const EngagementStyles = styled.div`
         height: 0.6rem;
         border-radius: 50%;
         background: var(--accent-2);
+        box-shadow: 0 0 10px rgba(240, 180, 106, 0.6);
       }
     }
   }
@@ -126,21 +141,23 @@ export default function EngagementSection() {
           subheading="Engagement models"
         />
         <div className="engagement__grid">
-          {models.map((model) => {
+          {models.map((model, index) => {
             const Icon = model.icon;
             return (
-              <div className="model" key={model.title}>
-                <div className="model__icon">
-                  <Icon />
+              <Reveal key={model.title} delay={index * 100}>
+                <div className="model glass">
+                  <div className="model__icon">
+                    <Icon />
+                  </div>
+                  <h3 className="model__title">{model.title}</h3>
+                  <p className="model__desc">{model.desc}</p>
+                  <ul className="model__points">
+                    {model.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
                 </div>
-                <h3 className="model__title">{model.title}</h3>
-                <p className="model__desc">{model.desc}</p>
-                <ul className="model__points">
-                  {model.points.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
-              </div>
+              </Reveal>
             );
           })}
         </div>

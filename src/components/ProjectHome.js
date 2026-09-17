@@ -10,6 +10,7 @@ import 'swiper/css/navigation';
 import SectionTitle from "./SectionTitle";
 import projects from "../assets/data/projects";
 import ProjectItem from "./ProjectItem";
+import Reveal from "./Reveal";
 
 
 SwiperCore.use([Navigation]);
@@ -28,13 +29,17 @@ const ProjectSectionStyle = styled.div`
   .swiper-button-next,
   .swiper-button-prev {
     color: var(--accent);
-    width: 4.4rem;
-    height: 4.4rem;
+    width: 4.6rem;
+    height: 4.6rem;
     z-index: 10;
-    background: rgba(12, 18, 28, 0.7);
-    border: 1px solid var(--surface-border);
+    background: var(--glass-bg-strong);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    backdrop-filter: blur(14px) saturate(160%);
+    border: 1px solid var(--glass-border);
     border-radius: 999px;
-    backdrop-filter: blur(8px);
+    box-shadow: var(--glass-rim), 0 12px 28px -14px rgba(0, 0, 0, 0.7);
+    transition: transform 0.7s var(--ease-smooth), background 0.6s var(--ease-smooth),
+      color 0.6s var(--ease-smooth), border-color 0.6s var(--ease-smooth);
   }
   .swiper-button-next::after,
   .swiper-button-prev::after {
@@ -48,7 +53,14 @@ const ProjectSectionStyle = styled.div`
   .swiper-button-next:hover,
   .swiper-button-prev:hover {
     color: var(--white);
-    background: rgba(99, 209, 191, 0.2);
+    border-color: var(--glass-border-hover);
+    background: rgba(99, 209, 191, 0.22);
+    transform: scale(1.08);
+  }
+  .swiper-button-next:active,
+  .swiper-button-prev:active {
+    transform: scale(0.96);
+    transition-duration: 0.2s;
   }
 `;
 
@@ -60,6 +72,7 @@ export default function ProjectSection() {
           heading="Projects"
           subheading="A curated selection, swipe to explore"
         />
+        <Reveal>
         <div className="projects__allItems">
           <Swiper
             spaceBetween={30}
@@ -89,6 +102,7 @@ export default function ProjectSection() {
             })}
           </Swiper>
         </div>
+        </Reveal>
       </div>
     </ProjectSectionStyle>
   );

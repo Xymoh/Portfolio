@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import PText from "./PText";
+import { glassLite } from "../styles/glass";
 
 const AboutItemStyles = styled.div`
   display: flex;
@@ -22,13 +23,18 @@ const AboutItemStyles = styled.div`
     flex-wrap: wrap;
   }
   .item {
-    background-color: var(--deep-dark);
-    padding: 1rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    ${glassLite}
+    padding: 0.9rem 1.3rem;
+    border-radius: 999px;
+    transition: transform 0.7s var(--ease-smooth), border-color 0.7s var(--ease-smooth),
+      background 0.7s var(--ease-smooth);
+    .para p {
+      color: var(--gray-1);
+    }
     &:hover {
-      background-color: var(--gray-2);
-      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--glass-border-hover);
+      transform: translateY(-3px) scale(1.03);
     }
   }
   ${(props) =>
@@ -48,7 +54,8 @@ const AboutItemStyles = styled.div`
       }
       .item {
         width: 100%;
-        padding: 1rem 1.2rem;
+        padding: 1.1rem 1.4rem;
+        border-radius: var(--radius-md);
         border-left: 3px solid var(--accent);
       }
     `}

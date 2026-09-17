@@ -12,7 +12,7 @@ const Typography = createGlobalStyle`
   }
   h1,h2,h3,h4,h5,h6{
     font-family: 'Montserrat Bold', 'Montserrat SemiBold', 'Segoe UI', sans-serif;
-    letter-spacing: 0.02em;
+    letter-spacing: -0.01em;
   }
 `;
 

@@ -6,6 +6,8 @@ import { MdArrowBack, MdArrowForward } from "react-icons/md";
 import SectionTitle from "./SectionTitle";
 import PText from "./PText";
 import testimonials from "../assets/data/testimonials";
+import Reveal from "./Reveal";
+import { glass } from "../styles/glass";
 
 const TestimonialsSectionStyles = styled.div`
   padding: 10rem 0;
@@ -16,11 +18,11 @@ const TestimonialsSectionStyles = styled.div`
     margin: 0 auto;
   }
   .testimonial__info {
+    ${glass}
     width: 100%;
     height: fit-content;
-    padding: 3rem;
-    background-color: var(--deep-dark);
-    border-radius: 12px;
+    padding: 3.4rem 3rem;
+    border-radius: var(--radius-lg);
     margin-top: 5rem;
   }
   .testimonial__desc {
@@ -50,13 +52,24 @@ const TestimonialsSectionStyles = styled.div`
     .prev {
       margin: 0 0.5rem;
       width: fit-content;
-      background-color: var(--deep-dark);
-      padding: 0.5rem 2rem;
-      border-radius: 8px;
+      background: var(--glass-bg-strong);
+      -webkit-backdrop-filter: blur(14px) saturate(160%);
+      backdrop-filter: blur(14px) saturate(160%);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-rim), 0 12px 28px -14px rgba(0, 0, 0, 0.7);
+      padding: 0.6rem 2.2rem;
+      border-radius: 999px;
       cursor: pointer;
-      transition: 0.2s ease background-color;
+      transition: transform 0.7s var(--ease-smooth), background 0.6s var(--ease-smooth),
+        border-color 0.6s var(--ease-smooth);
       &:hover {
-        background-color: var(--black);
+        background: rgba(99, 209, 191, 0.2);
+        border-color: var(--glass-border-hover);
+        transform: translateY(-2px) scale(1.04);
+      }
+      &:active {
+        transform: scale(0.96);
+        transition-duration: 0.2s;
       }
     }
   }
@@ -110,6 +123,7 @@ export default function TestimonialsSection() {
           heading="Programming Quotes"
           subheading="Choice of my favourite programming quotes"
         />
+        <Reveal>
         <div className="testimonial__wrapper">
           <SwitchTransition>
             <CSSTransition
@@ -118,7 +132,7 @@ export default function TestimonialsSection() {
               classNames="fade"
               nodeRef={nodeRef}
             >
-              <div ref={nodeRef} className="testimonial__info">
+              <div ref={nodeRef} className="testimonial__info glass">
                 <div className="testimonial__desc">
                   <PText>{activeSlide.desc}</PText>
                 </div>
@@ -150,6 +164,7 @@ export default function TestimonialsSection() {
             <MdArrowForward />
           </div>
         </div>
+        </Reveal>
       </div>
     </TestimonialsSectionStyles>
   );

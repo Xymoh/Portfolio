@@ -6,8 +6,11 @@ import PText from "./PText";
 
 const FooterStyles = styled.div`
   padding-top: 10rem;
-  background: linear-gradient(180deg, rgba(16, 23, 34, 0.45) 0%, var(--deep-bg) 45%);
-  border-top: 1px solid var(--surface-border);
+  background: linear-gradient(180deg, rgba(16, 23, 34, 0.35) 0%, rgba(16, 23, 34, 0.9) 45%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: blur(16px) saturate(150%);
+  border-top: 1px solid var(--glass-border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
   .container {
     display: flex;
     gap: 3rem;
@@ -26,7 +29,7 @@ const FooterStyles = styled.div`
     color: var(--white);
   }
   .copyright {
-    background-color: var(--deep-bg);
+    background-color: rgba(16, 23, 34, 0.6);
     text-align: left;
     padding: 1.4rem 0;
     margin-top: 5rem;

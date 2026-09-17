@@ -6,6 +6,7 @@ import HeroImg from "../assets/images/heroMainImg.jpg";
 import SocialMediaArrow from "../assets/images/down-arrow2.png";
 import PText from "./PText";
 import Button from "./Button";
+import { glass } from "../styles/glass";
 
 const HeroStyles = styled.div`
   .hero {
@@ -18,10 +19,67 @@ const HeroStyles = styled.div`
     position: relative;
     padding: 12rem 0 8rem;
   }
+  @keyframes heroIn {
+    from {
+      opacity: 0;
+      transform: translateY(28px) scale(0.985);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes pulseDot {
+    0% {
+      box-shadow: 0 0 0 0 rgba(99, 209, 191, 0.55);
+    }
+    70% {
+      box-shadow: 0 0 0 9px rgba(99, 209, 191, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(99, 209, 191, 0);
+    }
+  }
+  @keyframes floatY {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(8px);
+    }
+  }
+  .hero__badge {
+    ${glass}
+    --glass-bg: var(--glass-bg-strong);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.75rem 1.5rem 0.75rem 1.2rem;
+    border-radius: 999px;
+    font-size: 1.25rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 2.6rem;
+    animation: heroIn 0.8s var(--ease-out) backwards;
+    &::after {
+      display: none;
+    }
+  }
+  .hero__badge__dot {
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulseDot 2.2s ease-out infinite;
+  }
   .hero__heading {
     font-size: 2rem;
     margin-bottom: -1.2rem;
     position: relative;
+    z-index: 2;
+    animation: heroIn 0.8s var(--ease-out) 0.08s backwards;
     span {
       display: inline-block;
       width: 100%;
@@ -30,35 +88,61 @@ const HeroStyles = styled.div`
       font-size: 7.2rem;
       font-family: "Montserrat Bold";
       color: var(--white);
-      letter-spacing: 0.01em;
+      letter-spacing: -0.02em;
+      background: linear-gradient(180deg, #ffffff 0%, #c9d6e8 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
   }
   .hero__img {
+    position: relative;
     max-width: 920px;
     width: 100%;
     height: 560px;
     margin: 0 auto;
-    border: 1px solid var(--surface-border);
-    border-radius: 26px;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: var(--shadow-soft);
+    box-shadow: var(--glass-shadow), 0 0 0 1px rgba(255, 255, 255, 0.04);
     background: rgba(255, 255, 255, 0.02);
+    animation: heroIn 0.9s var(--ease-out) 0.18s backwards;
+    transition: transform 1.1s var(--ease-smooth), box-shadow 1.1s var(--ease-smooth);
     img {
       object-fit: cover;
-      transition: 0.45s ease transform;
+      transition: transform 1.6s var(--ease-smooth);
+    }
+    /* glass rim drawn over the photo */
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(255, 255, 255, 0) 30%
+      );
+    }
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--glass-shadow-hover);
     }
     &:hover img {
-      transform: scale(1.03);
+      transform: scale(1.035);
     }
   }
   .hero__info {
+    ${glass}
+    --glass-bg: var(--glass-bg-strong);
     margin: 2.8rem auto 0;
     max-width: 720px;
-    background: rgba(12, 18, 28, 0.72);
-    border: 1px solid var(--surface-border);
-    border-radius: 18px;
-    padding: 2.4rem;
-    box-shadow: var(--shadow-soft);
+    border-radius: var(--radius-lg);
+    padding: 2.6rem 2.4rem;
+    animation: heroIn 0.9s var(--ease-out) 0.3s backwards;
   }
   .hero__actions {
     display: flex;
@@ -101,6 +185,7 @@ const HeroStyles = styled.div`
   .hero__scrollDown {
     img {
       max-height: 140px;
+      animation: floatY 2.4s ease-in-out infinite;
     }
   }
   .hero__social__text {
@@ -112,9 +197,9 @@ const HeroStyles = styled.div`
         display: inline-block;
         font-size: 2.1rem;
         margin-bottom: 1.4rem;
-        transition: 0.2s ease transform, 0.2s ease color;
+        transition: transform 0.7s var(--ease-smooth), color 0.5s var(--ease-smooth);
         &:hover {
-          transform: translateY(-2px);
+          transform: translateY(-3px) scale(1.12);
           color: var(--accent);
         }
       }
@@ -124,6 +209,10 @@ const HeroStyles = styled.div`
     .hero {
       min-height: 760px;
       padding: 9rem 0 7rem;
+    }
+    .hero__badge {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
     }
     .hero__heading {
       font-size: 1.4rem;
@@ -186,6 +275,10 @@ export default function HeroSection() {
     <HeroStyles>
       <div className="hero">
         <div className="container">
+          <div className="hero__badge">
+            <span className="hero__badge__dot" aria-hidden="true" />
+            Open to new projects
+          </div>
           <h1 className="hero__heading">
             <span>Hello, This is</span>
             <span className="hero__name">Szymon Rusz.</span>
@@ -193,7 +286,7 @@ export default function HeroSection() {
           <div className="hero__img">
             <img src={HeroImg} alt="hero img" />
           </div>
-          <div className="hero__info">
+          <div className="hero__info glass">
             <PText>
               Independent software developer with 4+ years of commercial
               experience, building mobile and web apps for startups and

@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { MdCheck } from "react-icons/md";
 
 import services from "../assets/data/services";
+import Reveal from "./Reveal";
+import { glass, glassHover, glassLite, iconWell } from "../styles/glass";
 
 const ServicesDetailStyles = styled.div`
   .servicesDetail__grid {
@@ -12,26 +14,19 @@ const ServicesDetailStyles = styled.div`
     margin-top: 6rem;
   }
   .serviceCard {
+    ${glass}
+    ${glassHover}
     scroll-margin-top: 10rem;
     display: flex;
     flex-direction: column;
+    height: 100%;
     padding: 3rem 2.8rem;
-    background: var(--surface);
-    border: 1px solid var(--surface-border);
-    border-radius: 18px;
-    box-shadow: var(--shadow-soft);
-    transition: 0.25s ease border-color;
-    &:hover {
-      border-color: rgba(99, 209, 191, 0.5);
-    }
+    border-radius: var(--radius-lg);
   }
   .serviceCard--highlight {
-    border-color: rgba(99, 209, 191, 0.55);
-    background: linear-gradient(
-      160deg,
-      rgba(99, 209, 191, 0.1) 0%,
-      rgba(255, 255, 255, 0.03) 60%
-    );
+    border-color: rgba(99, 209, 191, 0.45);
+    box-shadow: var(--glass-rim), var(--glass-shadow),
+      0 0 0 1px rgba(99, 209, 191, 0.12), 0 0 48px -12px rgba(99, 209, 191, 0.45);
   }
   .serviceCard__head {
     display: flex;
@@ -39,19 +34,17 @@ const ServicesDetailStyles = styled.div`
     gap: 1.6rem;
   }
   .serviceCard__icon {
-    flex-shrink: 0;
+    ${iconWell}
     width: 5.4rem;
     height: 5.4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    background: rgba(99, 209, 191, 0.14);
+    transition: transform var(--hover-duration) var(--ease-smooth);
     svg {
       width: 2.8rem;
       height: 2.8rem;
-      color: var(--accent);
     }
+  }
+  .serviceCard:hover .serviceCard__icon {
+    transform: translateY(-2px) scale(1.06) rotate(-3deg);
   }
   .serviceCard__tag {
     font-size: 1.2rem;
@@ -108,11 +101,10 @@ const ServicesDetailStyles = styled.div`
     flex-wrap: wrap;
     gap: 0.8rem;
     span {
+      ${glassLite}
       font-size: 1.3rem;
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 1.1rem;
       border-radius: 999px;
-      background: var(--deep-dark);
-      border: 1px solid var(--surface-border);
       color: var(--ink-1);
     }
   }
@@ -135,38 +127,40 @@ export default function ServicesDetail() {
   return (
     <ServicesDetailStyles>
       <div className="servicesDetail__grid">
-        {services.map((service) => {
+        {services.map((service, index) => {
           const Icon = service.icon;
           const cardClass = service.highlight
-            ? "serviceCard serviceCard--highlight"
-            : "serviceCard";
+            ? "serviceCard serviceCard--highlight glass"
+            : "serviceCard glass";
           return (
-            <article key={service.id} id={service.id} className={cardClass}>
-              <div className="serviceCard__head">
-                <div className="serviceCard__icon">
-                  <Icon />
+            <Reveal key={service.id} delay={(index % 2) * 100}>
+              <article id={service.id} className={cardClass}>
+                <div className="serviceCard__head">
+                  <div className="serviceCard__icon">
+                    <Icon />
+                  </div>
+                  <div>
+                    <p className="serviceCard__tag">{service.tag}</p>
+                    <h3 className="serviceCard__title">{service.title}</h3>
+                  </div>
                 </div>
-                <div>
-                  <p className="serviceCard__tag">{service.tag}</p>
-                  <h3 className="serviceCard__title">{service.title}</h3>
+                <p className="serviceCard__desc">{service.desc}</p>
+                <p className="serviceCard__listTitle">What I can do</p>
+                <ul className="serviceCard__list">
+                  {service.includes.map((item) => (
+                    <li key={item}>
+                      <MdCheck />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="serviceCard__stack">
+                  {service.stack.map((tech) => (
+                    <span key={tech}>{tech}</span>
+                  ))}
                 </div>
-              </div>
-              <p className="serviceCard__desc">{service.desc}</p>
-              <p className="serviceCard__listTitle">What I can do</p>
-              <ul className="serviceCard__list">
-                {service.includes.map((item) => (
-                  <li key={item}>
-                    <MdCheck />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="serviceCard__stack">
-                {service.stack.map((tech) => (
-                  <span key={tech}>{tech}</span>
-                ))}
-              </div>
-            </article>
+              </article>
+            </Reveal>
           );
         })}
       </div>
