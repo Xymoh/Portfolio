@@ -70,16 +70,20 @@ export default function ProjectItem({
   img = projectImg,
   title = "Project Name",
   desc = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  url = "/projects"
+  url = "",
 }) {
-  const projectUrl = url || "/projects";
-  const isExternal = /^https?:\/\//i.test(projectUrl);
+  const isExternal = /^https?:\/\//i.test(url);
 
+  // Projects without a public link (e.g. client work) render as plain cards.
   const LinkWrapper = ({ children, className }) => {
+    if (!url) {
+      return <div className={className}>{children}</div>;
+    }
+
     if (isExternal) {
       return (
         <a
-          href={projectUrl}
+          href={url}
           className={className}
           target="_blank"
           rel="noreferrer"
@@ -90,7 +94,7 @@ export default function ProjectItem({
     }
 
     return (
-      <Link to={projectUrl} className={className}>
+      <Link to={url} className={className}>
         {children}
       </Link>
     );
@@ -99,7 +103,7 @@ export default function ProjectItem({
   return (
     <ProjectItemStyle>
       <LinkWrapper className="projectItem__img projectItem__link">
-        <img src={img} alt="project img" />
+        <img src={img} alt={title} />
       </LinkWrapper>
       <div className="projectItem__info">
         <LinkWrapper className="projectItem__link">

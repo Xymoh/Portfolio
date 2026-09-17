@@ -53,12 +53,18 @@ const HeroStyles = styled.div`
   }
   .hero__info {
     margin: 2.8rem auto 0;
-    max-width: 680px;
+    max-width: 720px;
     background: rgba(12, 18, 28, 0.72);
     border: 1px solid var(--surface-border);
     border-radius: 18px;
     padding: 2.4rem;
     box-shadow: var(--shadow-soft);
+  }
+  .hero__actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.6rem;
+    flex-wrap: wrap;
   }
   .hero__social,
   .hero__scrollDown {
@@ -133,6 +139,15 @@ const HeroStyles = styled.div`
       margin-top: 2.4rem;
       padding: 1.8rem;
     }
+    .hero__actions {
+      flex-direction: column;
+      gap: 0;
+      .button-wrapper,
+      a {
+        width: 100%;
+        text-align: center;
+      }
+    }
     .hero__social {
       left: 0px;
       bottom: -9%;
@@ -180,15 +195,18 @@ export default function HeroSection() {
           </div>
           <div className="hero__info">
             <PText>
-              I am a Computer Science student focused on crafting polished
-              digital products across mobile apps, web interfaces, and gameplay
-              systems. I blend practical engineering with thoughtful UI design.
+              Independent software developer with 4+ years of commercial
+              experience, building mobile and web apps for startups and
+              enterprises - from first MVPs to banking products. I take on any
+              type of application, with my deepest expertise in React Native
+              and React, and I also build generative AI workflows with ComfyUI
+              and custom LoRAs. Free estimate and a clear Statement of Work on
+              every project.
             </PText>
-            <Button
-              btnLink="/projects"
-              btnText="Explore My Projects"
-              outline={false}
-            />
+            <div className="hero__actions">
+              <Button btnLink="/contact" btnText="Get a free estimate" />
+              <Button btnLink="/services" btnText="View services" outline />
+            </div>
           </div>
           <div className="hero__social">
             <div className="hero__social__indicator">

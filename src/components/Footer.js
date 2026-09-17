@@ -63,11 +63,10 @@ export default function Footer() {
         <div className="footer__col1">
           <h1 className="footer__col1__title">Szymon Ruszkiewicz</h1>
           <PText>
-            A Computer Science student with Game Programming and Mobile
-            Programming Speciality. I'm mainly working using tools like Unity
-            and Kotlin. My other area of interests are ML with python and
-            Discord.py and React for websites with some basic knowledge of REST
-            API with Django.
+            Independent software developer from Katowice, Poland. I build
+            mobile and web apps (React Native, React, Node.js), custom software
+            of any kind, and generative AI workflows with ComfyUI and custom
+            LoRAs. Free estimate and a Statement of Work on every project.
           </PText>
         </div>
         <div className="footer__col2">
@@ -82,6 +81,11 @@ export default function Footer() {
               {
                 title: "About",
                 path: "/about",
+                type: "Link",
+              },
+              {
+                title: "Services",
+                path: "/services",
                 type: "Link",
               },
               {

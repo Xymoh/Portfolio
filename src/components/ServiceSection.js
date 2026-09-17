@@ -1,25 +1,34 @@
 import React from "react";
 import styled from "styled-components";
-import { MdDesktopMac, MdPhoneAndroid, MdCode } from "react-icons/md";
 
 import SectionTitle from "./SectionTitle";
 import ServicesSectionItem from "./ServicesSectionItem";
+import Button from "./Button";
+import PText from "./PText";
+import services from "../assets/data/services";
 
 const ServicesItemStyles = styled.div`
   padding: 10rem 0;
+  .services__intro {
+    margin-top: 2.4rem;
+    text-align: center;
+  }
   .services__allItems {
-    display: flex;
-    gap: 10rem;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2.4rem;
     margin-top: 5rem;
+  }
+  .services__cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
   }
   @media only screen and (max-width: 768px) {
     .services__allItems {
-      flex-direction: column;
-      max-width: 350px;
-      margin: 0 auto;
-      margin-top: 5rem;
-      gap: 5rem;
+      grid-template-columns: 1fr;
+      max-width: 420px;
+      margin: 5rem auto 0;
     }
   }
 `;
@@ -28,22 +37,32 @@ export default function ServiceSection() {
   return (
     <ServicesItemStyles>
       <div className="container">
-        <SectionTitle heading="Services" subheading="What I will do for you" />
+        <SectionTitle heading="Services" subheading="What I can build for you" />
+        <div className="services__intro">
+          <PText>
+            I take on any type of application, with my deepest expertise in
+            mobile and web. Every project starts with a free estimate and a
+            clear Statement of Work.
+          </PText>
+        </div>
         <div className="services__allItems">
-          <ServicesSectionItem
-            icon={<MdDesktopMac />}
-            title="Game Dev"
-            desc="I make mobile and pc games using Unity Engine and/or Unreal Engine. Every genre is possible, I just love making games."
-          />
-          <ServicesSectionItem 
-          icon={<MdPhoneAndroid />} 
-          title="Mobile Apps"
-          desc="I make mobile apps mainly on Android using Kotlin and AS, but if it is a simple mobile application I can make Crossplatform one for you using Xamarin."
-          />
-          <ServicesSectionItem
-          icon={<MdCode />}
-          title="Web Dev"
-          desc="I do UI/UX design and can also program a unique front look. I'm still learning REST API Django, so I can provide you with more advanced websites." />
+          {services.map((service) => {
+            const Icon = service.icon;
+            return (
+              <ServicesSectionItem
+                key={service.id}
+                icon={<Icon />}
+                title={service.title}
+                tag={service.tag}
+                desc={service.short}
+                highlight={service.highlight}
+                link={`/services#${service.id}`}
+              />
+            );
+          })}
+        </div>
+        <div className="services__cta">
+          <Button btnLink="/services" btnText="See all services" outline />
         </div>
       </div>
     </ServicesItemStyles>

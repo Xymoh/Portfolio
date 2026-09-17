@@ -7,6 +7,7 @@ import NavMenu from "./components/NavMenu";
 import About from "./pages/About";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
+import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" Component={Home} />
           <Route path="/about" Component={About} />
+          <Route path="/services" Component={Services} />
           <Route path="/projects" Component={Projects} />
           <Route path="/contact" Component={Contact} />
         </Routes>

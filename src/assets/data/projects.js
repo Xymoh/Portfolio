@@ -7,14 +7,13 @@ import dkLogoId from "../images/dklogoid.png";
 import tdcmscssLogo from "../images/tdcmcss.jpg";
 import wattcrowdLogo from "../images/wattcrowd-logo-light.svg";
 import dialRecIcon from "../images/phone-dial-out-icon-vector.jpg";
-import discordKayn from "../images/discordkayn.png";
-import uruksahzal from "../images/uruksahzal.png";
-import portfolio from "../images/portfolio.png";
-import wcfLocalChat from "../images/wcfLocalChat.png";
 import emotionrt from "../images/Happy.png";
-import unscrambleWords from "../images/unscrambleWords.png";
 import riyadBankIcon from "../images/riyadbank-icon.png";
 import riyadBankPayIcon from "../images/riyadbankpay-icon.png";
+import apartmentPermitsIcon from "../images/apartmentpermits-icon.png";
+import civitaiLoraSample from "../images/civitai-lora-sample.jpg";
+import imgTagbooruCover from "../images/img-tagbooru-cover.jpg";
+import tagbooruToolkit from "../images/tagbooru-toolkit.svg";
 
 const projects = [
   {
@@ -37,6 +36,34 @@ const projects = [
     desc: "Sea Service is a startup mobile application that allows users to track their sea service time and generate a sea service letter. The application is built with React Native and Rails.",
     img: seaServiceLogo,
     url: "https://play.google.com/store/apps/details?id=com.seaservice&hl=en",
+  },
+  {
+    id: uuidv4(),
+    name: "Img-Tagbooru",
+    desc: "A local, offline Danbooru-style image tagging tool for anime and illustration workflows. Tags images with an ONNX vision model or generates tags from text with a local LLM, with batch processing, a caption editor and TXT/ZIP export. Built for LoRA trainers and dataset curators - no cloud APIs, fully private.",
+    img: imgTagbooruCover,
+    url: "https://xymoh.itch.io/img-tagbooru",
+  },
+  {
+    id: uuidv4(),
+    name: "Civitai LoRAs",
+    desc: "My Civitai creator profile with published LoRAs: character LoRAs for Zenless Zone Zero, Honkai: Star Rail and Genshin Impact, plus an art-style LoRA. Each model ships with prompts and sample generations - a live showcase of the LoRA training and ComfyUI work I offer as a service.",
+    img: civitaiLoraSample,
+    url: "https://civitai.com/user/szyrus",
+  },
+  {
+    id: uuidv4(),
+    name: "ApartmentPermits",
+    desc: "Parking permit platform for multi-family communities with virtual permits, resident and guest self-registration and enforcement tools. I worked on the camera-based licence plate recognition: point the phone at a car and the plate is scanned and checked against the permit list on the spot.",
+    img: apartmentPermitsIcon,
+    url: "https://www.apartmentpermits.com/",
+  },
+  {
+    id: uuidv4(),
+    name: "Tagbooru Toolkit",
+    desc: "The web companion to Img-Tagbooru. Cleans up noisy tags copied from Danbooru and other sources, categorises them into organised prompt blocks (character, style, composition, ...) and runs local WD14/SwinV2 tagging backed by an offline index of over one million Danbooru tags.",
+    img: tagbooruToolkit,
+    url: "https://xymoh.github.io/Tagbooru/",
   },
   {
     id: uuidv4(),
@@ -82,45 +109,10 @@ const projects = [
   },
   {
     id: uuidv4(),
-    name: "Discord bot for League of Legends",
-    desc: "I had made this discord bot for people who want to compete among the friends with the league of legends ranking system. Users can create a custom list for their discord server and see the ranking within the made list. For the technologies I had used Discord.py / SQLite / RiotAPI",
-    img: discordKayn,
-    url: "https://github.com/Xymoh/OdysseyKaynBot",
-  },
-  {
-    id: uuidv4(),
-    name: "Uruk'Sahzal Assault",
-    desc: "Unity project game for a spaceship battle game working on railway camera!",
-    img: uruksahzal,
-    url: "https://github.com/Xymoh/Uruk-Sahzal-Assault",
-  },
-  {
-    id: uuidv4(),
-    name: "Portfolio",
-    desc: "My own website where you can get to know me and see my recent works!",
-    img: portfolio,
-    url: "https://github.com/Xymoh/Portfolio",
-  },
-  {
-    id: uuidv4(),
-    name: "WCF Local Chat",
-    desc: "This application allows two or more people to communicate in a chat in the way of sending messages by text form. This chat works on a local connection/local machine.",
-    img: wcfLocalChat,
-    url: "https://github.com/Xymoh/WcfLocalChat",
-  },
-  {
-    id: uuidv4(),
     name: "Emotion Real Time",
     desc: "Using Python Machine Learning and external camera program upon the successfull training recognizes emotions on human faces in real time.",
     img: emotionrt,
     url: "https://github.com/Xymoh/EmotionsRealTimeML",
-  },
-  {
-    id: uuidv4(),
-    name: "Unscramble Words",
-    desc: "Software dedicated to decode a text string entered by the user using a textbox or a custom text file.",
-    img: unscrambleWords,
-    url: "https://github.com/Xymoh/UnscrambleWords",
   },
 ];
 

@@ -11,7 +11,7 @@ const NavMenuStyles = styled.div`
   width: 100%;
   padding: 0.8rem 0;
   ul {
-    max-width: 720px;
+    max-width: 780px;
     margin: 0 auto;
     width: 90%;
     background: rgba(12, 18, 28, 0.8);
@@ -147,6 +147,17 @@ export default function NavMenu() {
             tabIndex={0}
           >
             About
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/services"
+            onClick={() => SetShowNav(!showNav)}
+            role="button"
+            onKeyDown={() => SetShowNav(!showNav)}
+            tabIndex={0}
+          >
+            Services
           </NavLink>
         </li>
         <li>

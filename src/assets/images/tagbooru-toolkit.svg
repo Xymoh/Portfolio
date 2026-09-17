@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1f2b3c"/>
+      <stop offset="1" stop-color="#141c28"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="48" fill="url(#bg)"/>
+  <rect x="1" y="1" width="510" height="510" rx="47" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+  <!-- braces -->
+  <g fill="none" stroke="#7f93ad" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M132 110 c-30 0 -30 30 -30 50 v22 c0 14 -8 22 -22 22 c14 0 22 8 22 22 v22 c0 20 0 50 30 50"/>
+    <path d="M380 110 c30 0 30 30 30 50 v22 c0 14 8 22 22 22 c-14 0 -22 8 -22 22 v22 c0 20 0 50 -30 50"/>
+  </g>
+  <!-- tag icon -->
+  <path d="M176 150 h96 l88 88 l-84 84 l-100 -100 z" fill="#63d1bf"/>
+  <circle cx="208" cy="182" r="14" fill="#101722"/>
+  <!-- sorted tag lines -->
+  <g stroke-linecap="round" stroke-width="10">
+    <path d="M176 322 h160" stroke="#f0b46a"/>
+    <path d="M176 346 h112" stroke="#9fb3cc"/>
+  </g>
+  <!-- title -->
+  <text x="256" y="404" text-anchor="middle" font-family="Montserrat, 'Segoe UI', Arial, sans-serif" font-size="40" font-weight="700" fill="#f7f9fd">Tagbooru Toolkit</text>
+  <text x="256" y="444" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="18" fill="#7f93ad" letter-spacing="3">TAG FORMATTER  |  WEB</text>
+</svg>

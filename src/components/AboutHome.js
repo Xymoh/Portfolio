@@ -81,13 +81,15 @@ export default function AboutSection() {
             heading="About me"
           />
           <PText>
-            I am a Computer Science student from University of Economics in
-            Katowice, Poland. I create video games and mobile applications. I
-            love entertainment and I always try to show my unique views to the
-            audience through my own game/app design.
+            I am Szymon, a software developer from Katowice, Poland, working
+            with startups and companies as an independent contractor. Over the
+            last 4+ years I have shipped cross-platform mobile apps for
+            startups and publishers and worked on a large-scale React Native
+            banking application. I handle the whole journey: estimate,
+            Statement of Work, architecture, development, release and support.
           </PText>
           <div className="aboutSection__buttons">
-            <Button btnLink="/projects" btnText="Works"></Button>
+            <Button btnLink="/services" btnText="Services"></Button>
             <Button btnLink="/about" btnText="Read More" outline></Button>
           </div>
         </div>
