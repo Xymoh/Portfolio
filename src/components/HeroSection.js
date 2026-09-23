@@ -311,7 +311,7 @@ export default function HeroSection() {
                   <a
                     href="https://github.com/Xymoh"
                     target="_blank"
-                    rel="norefferer noreferrer"
+                    rel="noopener noreferrer"
                   >
                     <FaGithub />
                   </a>
@@ -320,7 +320,7 @@ export default function HeroSection() {
                   <a
                     href="https://www.instagram.com/szy.rus/"
                     target="_blank"
-                    rel="norefferer noreferrer"
+                    rel="noopener noreferrer"
                   >
                     <FaInstagram />
                   </a>
@@ -329,7 +329,7 @@ export default function HeroSection() {
                   <a
                     href="https://www.linkedin.com/in/szymon-r-548526180/"
                     target="_blank"
-                    rel="norefferer noreferrer"
+                    rel="noopener noreferrer"
                   >
                     <FaLinkedin />
                   </a>
