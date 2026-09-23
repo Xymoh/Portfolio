@@ -20,7 +20,7 @@ export default function Button({
   return (
     <ButtonStyle $outline={outline} className="button-wrapper">
       {href ? (
-        <a className="button" href={href} target="_blank" rel="noreferrer">
+        <a className="button" href={href} target="_blank" rel="noopener noreferrer">
           {btnText}
         </a>
       ) : (
