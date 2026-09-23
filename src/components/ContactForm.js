@@ -86,19 +86,16 @@ export default function ContactForm() {
           e.target,
           process.env.REACT_APP_EMAILJS_USER
         )
-        .then((res) => {
-          console.log(res);
+        .then(() => {
           setStatus({ type: "success", message: "Email sent successfully!" });
           setFromName("");
           setEmail("");
           setMessage("");
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
           setStatus({ type: "error", message: "Failed to send email. Please try again." });
         });
-    } catch (err) {
-      console.log(err);
+    } catch (_) {
       setStatus({ type: "error", message: "Failed to send email. Please try again." });
     }
   }
