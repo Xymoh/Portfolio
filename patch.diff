@@ -1,0 +1,11 @@
+--- src/components/ProjectSection.js
++++ src/components/ProjectSection.js
+@@ -1,7 +1,3 @@
+-<<<<<<< HEAD
+-import { useEffect, useState } from "react";
+-=======
+-import React, { useMemo, useState } from "react";
+->>>>>>> 4d47dfe (Performance optimization in ProjectSection)
++import { useMemo, useState } from "react";
+ import styled from "styled-components";
+ import { MdSearch } from "react-icons/md";

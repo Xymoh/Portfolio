@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /*
  * Fades content up once it scrolls into view. `delay` (ms) staggers items in

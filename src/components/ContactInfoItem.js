@@ -1,4 +1,3 @@
-import React from "react";
 import { MdPlace } from "react-icons/md";
 import styled from "styled-components";
 
