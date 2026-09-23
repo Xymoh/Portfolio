@@ -1,4 +1,4 @@
-import React from 'react';
+import { StrictMode } from "react";
 import { createRoot } from 'react-dom/client';
 
 import './index.css';
@@ -17,11 +17,11 @@ const root = createRoot(container);
 
 function renderApp() {
   root.render(
-    <React.StrictMode>
+    <StrictMode>
       <GlobalStyles />
       <Typography />
       <App />
-    </React.StrictMode>
+    </StrictMode>
   );
 }
 

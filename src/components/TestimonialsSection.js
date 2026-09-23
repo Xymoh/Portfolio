@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
 import styled from "styled-components";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
