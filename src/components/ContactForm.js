@@ -68,11 +68,9 @@ export default function ContactForm() {
         process.env.REACT_APP_EMAILJS_USER
       )
       .then((res) => {
-        console.log(res);
         window.alert("Email sent successfully");
       })
       .catch((err) => {
-        console.log(err);
         window.alert("Failed to send email. Please try again.");
       });
   }
