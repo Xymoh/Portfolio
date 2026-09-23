@@ -86,19 +86,16 @@ export default function ProjectSection() {
               },
             }}
           >
-            {projects.map((project, index) => {
-              if (index >= 5) return null;
-              return (
-                <SwiperSlide key={project.id}>
-                  <ProjectItem
-                    img={project.img}
-                    title={project.name}
-                    desc={project.desc}
-                    url={project.url}
-                  />
-                </SwiperSlide>
-              );
-            })}
+            {projects.slice(0, 5).map((project) => (
+              <SwiperSlide key={project.id}>
+                <ProjectItem
+                  img={project.img}
+                  title={project.name}
+                  desc={project.desc}
+                  url={project.url}
+                />
+              </SwiperSlide>
+            ))}
           </Swiper>
         </div>
         </Reveal>
