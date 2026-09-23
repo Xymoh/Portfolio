@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo, useState } from "react";
 import styled from "styled-components";
 import { MdSearch } from "react-icons/md";
 
@@ -62,23 +62,18 @@ const ProjectsStyles = styled.div`
 
 export default function Projects() {
   const [searchText, setSearchText] = useState("");
-  const [projectData, setProjectData] = useState(ProjectInfo);
 
-  useEffect(() => {
-    if (searchText === "") return;
-    setProjectData(() =>
-      ProjectInfo.filter((item) =>
-        item.name.toLowerCase().match(searchText.toLowerCase())
-      )
+  const projectData = useMemo(() => {
+    if (searchText === "") return ProjectInfo;
+    const lowerSearchText = searchText.toLowerCase();
+    return ProjectInfo.filter((item) =>
+      item.name.toLowerCase().match(lowerSearchText)
     );
   }, [searchText]);
 
   function handleChange(e) {
     e.preventDefault();
     setSearchText(e.target.value);
-    if (!e.target.value.length > 0) {
-      setProjectData(ProjectInfo);
-    }
   }
 
   return (
