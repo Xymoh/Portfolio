@@ -52,29 +52,55 @@ const FormStyles = styled.form`
   }
 `;
 
+const StatusMessage = styled.div`
+  margin-top: 1.5rem;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 1.5rem;
+  background: ${(props) =>
+    props.type === "success"
+      ? "rgba(99, 209, 191, 0.15)"
+      : "rgba(235, 87, 87, 0.15)"};
+  border: 1px solid ${(props) =>
+    props.type === "success"
+      ? "rgba(99, 209, 191, 0.3)"
+      : "rgba(235, 87, 87, 0.3)"};
+  color: ${(props) =>
+    props.type === "success" ? "var(--accent)" : "#ff6b6b"};
+`;
+
 export default function ContactForm() {
   const [fromName, setFromName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState({ type: null, message: "" });
 
   function sentEmail(e) {
     e.preventDefault();
 
-    emailjs
-      .sendForm(
-        process.env.REACT_APP_EMAILJS_SERVICE,
-        process.env.REACT_APP_EMAILJS_TEMPLATE,
-        e.target,
-        process.env.REACT_APP_EMAILJS_USER
-      )
-      .then((res) => {
-        console.log(res);
-        window.alert("Email sent successfully");
-      })
-      .catch((err) => {
-        console.log(err);
-        window.alert("Failed to send email. Please try again.");
-      });
+    try {
+      emailjs
+        .sendForm(
+          process.env.REACT_APP_EMAILJS_SERVICE,
+          process.env.REACT_APP_EMAILJS_TEMPLATE,
+          e.target,
+          process.env.REACT_APP_EMAILJS_USER
+        )
+        .then((res) => {
+          console.log(res);
+          setStatus({ type: "success", message: "Email sent successfully!" });
+          setFromName("");
+          setEmail("");
+          setMessage("");
+        })
+        .catch((err) => {
+          console.log(err);
+          setStatus({ type: "error", message: "Failed to send email. Please try again." });
+        });
+    } catch (err) {
+      console.log(err);
+      setStatus({ type: "error", message: "Failed to send email. Please try again." });
+    }
   }
 
   return (
@@ -119,6 +145,9 @@ export default function ContactForm() {
         </label>
       </div>
       <button type="submit">Send</button>
+      {status.message && (
+        <StatusMessage type={status.type}>{status.message}</StatusMessage>
+      )}
     </FormStyles>
   );
 }
